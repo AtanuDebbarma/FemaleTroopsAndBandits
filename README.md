@@ -2,8 +2,7 @@
 
 A Mount & Blade II: Bannerlord mod that adds independent female troop trees for kingdom recruits, militia, minor factions, mercenaries, gangsters, caravan troops, bandits, War Sails marines, and Story Mode conspiracy forces. Female troops spawn from MCM percentages and do not overwrite vanilla troops.
 
-**Nexus Mod URL:** Coming soon  
-**Source:** [github.com/AtanuDebbarma/FemaleTroopsAndBandits](https://github.com/AtanuDebbarma/FemaleTroopsAndBandits)
+**Nexus Mod URL:** [FemaleTroopsAndBandits (for 1.4.8 and Warsails)](https://www.nexusmods.com/mountandblade2bannerlord/mods/14461)
 
 ## About this mod
 
