@@ -5,7 +5,7 @@ Female Troops and Bandits ships in English only. Every piece of text the mod add
 ## What can be translated
 
 - **Mod Configuration Menu:** every group, setting name and hint is in `ModuleData/Languages/EN/ftr_strings_en.xml`. Use that file as your MCM template.
-- **Troop and item names:** each has a `{=ftr_*}` id with an English fallback in the ModuleData character and item XML (`spfnpccharacters.xml`, `ftr_extra_troops.xml`, `ftr_bandit_troops.xml`, `ftr_quest_caravan_troops.xml`, `ftr_sword_sister_t6.xml`, `ftr_items.xml`, and related files). Put those same ids into your language file with translated `text` values.
+- **Troop and item names:** each has a `{=ftr_*}` id with an English fallback in the ModuleData character and item XML (`spfnpccharacters.xml`, `ftr_extra_troops.xml`, `ftr_bandit_troops.xml`, `ftr_quest_caravan_troops.xml`, `ftr_naval_caravan_troops.xml`, `ftr_sword_sister_t6.xml`, `ftr_items.xml`, and related files). Put those same ids into your language file with translated `text` values.
 
 Vanilla troop names the mod does not redefine stay as the base game's own text.
 

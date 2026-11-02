@@ -4,12 +4,16 @@
 
 First release.
 
+- Branch and encyclopedia wiring wait until character Culture is ready (session launch / daily tick / MCM). Avoids Crash Doctor false "troop files did not fully load" notices from touching UpgradeTargets during OnGameStart.
+
 - Direct continuation and upgrade of Female Troops Reborn V1.7.0. Independent female trees (`ftr_*`). Vanilla troops are not overwritten.
 - Full MCM under **Troops** then **Bandits**. Per-group toggle and 0–100% slider. Default 25%.
-- Kingdom recruits, militia, minor factions, mercenaries (Sword Sisters stay vanilla), gangsters, caravan troops (including Smugglers quest parties), War Sails marines, bandits, Corsairs, Army of Poachers, and Story Mode conspiracy parties.
+- Kingdom recruits, militia, minor factions, mercenaries (Sword Sisters stay vanilla), gangsters, caravan troops (including Smugglers quest parties and War Sails naval/convoy caravan troops), War Sails marines, bandits, Corsairs, Army of Poachers, and Story Mode conspiracy parties.
+- War Sails naval caravan combat line: `ftr_naval_armed_trader_*`, `ftr_naval_caravan_guard_*`, `ftr_naval_veteran_caravan_guard_*` (7 cultures). Same **Caravan Troops** MCM group as land caravans.
 - War Sails Nord female recruit and militia trees. Female Sea Raiders follow the Nord upgrade exit when War Sails is loaded.
 - Optional [Camel Cavalry](https://www.nexusmods.com/mountandblade2bannerlord/mods/14240): female camel upgrades follow Aserai / Khuzait recruit switches.
-- Optional [Horse Bandits](https://www.nexusmods.com/mountandblade2bannerlord/mods/14448): MCM **Horse Bandits (Mod Support)** under Bandits (default 25%). Hidden when that mod is not enabled.
+- Optional [Horse Bandits](https://www.nexusmods.com/mountandblade2bannerlord/mods/14448): MCM **HorseBandits (Mod Support)** under Bandits (default 25%). Omitted from MCM when that mod is not enabled.
+- MCM: Conspiracy (Anti-Empire / Imperial) sits at the bottom of Troops; long tooltips shortened.
 - Optional [Raise Your Banner](https://www.nexusmods.com/mountandblade2bannerlord/mods/3253): banner-bearer battle-equipment fill for auto-resolve.
 - Sword Sister Tier 6: Upgraded Veteran Sword Sister and Upgraded Gallant Sword Sister. Vanilla T5 unchanged.
 - Encyclopedia hides female lines when their switch is off or a required optional mod is missing.

@@ -201,6 +201,28 @@ namespace FemaleTroopsAndBandits
             { "veteran_caravan_guard_sturgia", new Swap("ftr_veteran_caravan_guard_sturgia", FemaleTroopsSettings.GroupCaravan) },
             { "veteran_caravan_guard_vlandia", new Swap("ftr_veteran_caravan_guard_vlandia", FemaleTroopsSettings.GroupCaravan) },
             { "veteran_caravan_guard_nord", new Swap("ftr_veteran_caravan_guard_nord", FemaleTroopsSettings.GroupCaravan) },
+            // War Sails naval/convoy caravan templates (separate IDs from land caravans).
+            { "naval_armed_trader_aserai", new Swap("ftr_naval_armed_trader_aserai", FemaleTroopsSettings.GroupCaravan) },
+            { "naval_armed_trader_battania", new Swap("ftr_naval_armed_trader_battania", FemaleTroopsSettings.GroupCaravan) },
+            { "naval_armed_trader_empire", new Swap("ftr_naval_armed_trader_empire", FemaleTroopsSettings.GroupCaravan) },
+            { "naval_armed_trader_khuzait", new Swap("ftr_naval_armed_trader_khuzait", FemaleTroopsSettings.GroupCaravan) },
+            { "naval_armed_trader_sturgia", new Swap("ftr_naval_armed_trader_sturgia", FemaleTroopsSettings.GroupCaravan) },
+            { "naval_armed_trader_vlandia", new Swap("ftr_naval_armed_trader_vlandia", FemaleTroopsSettings.GroupCaravan) },
+            { "naval_armed_trader_nord", new Swap("ftr_naval_armed_trader_nord", FemaleTroopsSettings.GroupCaravan) },
+            { "naval_caravan_guard_aserai", new Swap("ftr_naval_caravan_guard_aserai", FemaleTroopsSettings.GroupCaravan) },
+            { "naval_caravan_guard_battania", new Swap("ftr_naval_caravan_guard_battania", FemaleTroopsSettings.GroupCaravan) },
+            { "naval_caravan_guard_empire", new Swap("ftr_naval_caravan_guard_empire", FemaleTroopsSettings.GroupCaravan) },
+            { "naval_caravan_guard_khuzait", new Swap("ftr_naval_caravan_guard_khuzait", FemaleTroopsSettings.GroupCaravan) },
+            { "naval_caravan_guard_sturgia", new Swap("ftr_naval_caravan_guard_sturgia", FemaleTroopsSettings.GroupCaravan) },
+            { "naval_caravan_guard_vlandia", new Swap("ftr_naval_caravan_guard_vlandia", FemaleTroopsSettings.GroupCaravan) },
+            { "naval_caravan_guard_nord", new Swap("ftr_naval_caravan_guard_nord", FemaleTroopsSettings.GroupCaravan) },
+            { "naval_veteran_caravan_guard_aserai", new Swap("ftr_naval_veteran_caravan_guard_aserai", FemaleTroopsSettings.GroupCaravan) },
+            { "naval_veteran_caravan_guard_battania", new Swap("ftr_naval_veteran_caravan_guard_battania", FemaleTroopsSettings.GroupCaravan) },
+            { "naval_veteran_caravan_guard_empire", new Swap("ftr_naval_veteran_caravan_guard_empire", FemaleTroopsSettings.GroupCaravan) },
+            { "naval_veteran_caravan_guard_khuzait", new Swap("ftr_naval_veteran_caravan_guard_khuzait", FemaleTroopsSettings.GroupCaravan) },
+            { "naval_veteran_caravan_guard_sturgia", new Swap("ftr_naval_veteran_caravan_guard_sturgia", FemaleTroopsSettings.GroupCaravan) },
+            { "naval_veteran_caravan_guard_vlandia", new Swap("ftr_naval_veteran_caravan_guard_vlandia", FemaleTroopsSettings.GroupCaravan) },
+            { "naval_veteran_caravan_guard_nord", new Swap("ftr_naval_veteran_caravan_guard_nord", FemaleTroopsSettings.GroupCaravan) },
         };
 
         internal static void Visit(List<string> maleIds, List<string> femaleIds, List<string> groupIds)

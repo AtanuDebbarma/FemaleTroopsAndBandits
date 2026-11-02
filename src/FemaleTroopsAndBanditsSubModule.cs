@@ -36,8 +36,11 @@ namespace FemaleTroopsAndBandits
         protected override void OnGameStart(Game game, IGameStarter gameStarterObject)
         {
             base.OnGameStart(game, gameStarterObject);
-            FemaleTroopBranches.Apply(FemaleTroopsSettings.Instance);
 
+            // Do not wire upgrades here. Characters are registered but not ready yet
+            // (Culture still null). Reading UpgradeTargets that early trips Crash Doctor's
+            // null-field fallback, which stamps empty upgrade lists and shows a false
+            // "troop files did not fully load" notice. Session launch + daily tick apply.
             CampaignGameStarter starter = gameStarterObject as CampaignGameStarter;
             if (game.GameType is Campaign && starter != null)
             {

@@ -2,11 +2,12 @@
 
 A Mount & Blade II: Bannerlord mod that adds independent female troop trees for kingdom recruits, militia, minor factions, mercenaries, gangsters, caravan troops, bandits, War Sails marines, and Story Mode conspiracy forces. Female troops spawn from MCM percentages and do not overwrite vanilla troops.
 
-**Nexus Mod URL:** Coming soon
+**Nexus Mod URL:** Coming soon  
+**Source:** [github.com/AtanuDebbarma/FemaleTroopsAndBandits](https://github.com/AtanuDebbarma/FemaleTroopsAndBandits)
 
 ## About this mod
 
-This is a direct continuation and upgrade of **[Female Troops Reborn V1.7.0](https://www.nexusmods.com/mountandblade2bannerlord/mods/3715)** by AzureKnight and Xacor. It keeps the original idea of female troops while adding independent IDs, full MCM control, bandits, War Sails Nord support, and optional integration with published companion mods.
+This is a direct continuation and upgrade of **[Female Troops Reborn V1.7.0](https://www.nexusmods.com/mountandblade2bannerlord/mods/3715)** by **AzureKnight** and **Xacor**. Full credit to them for the original Female Troops Reborn work this mod builds on. Female Troops and Bandits keeps that idea while adding independent IDs, full MCM control, bandits, War Sails Nord and naval convoy support, and optional integration with published companion mods.
 
 ### Key differences from the original
 
@@ -14,8 +15,8 @@ This is a direct continuation and upgrade of **[Female Troops Reborn V1.7.0](htt
 - **Full MCM:** Per-group toggle and 0–100% slider. Default 25%. No XML editing.
 - **MCM layout:** **Troops** first, then **Bandits**.
 - **Female bandits:** Looters, Sea Raiders, Mountain, Forest, Desert, Steppe, War Sails Corsairs, and Army of Poachers.
-- **Caravan / Smugglers:** Female Armed Traders and Caravan Guards. Vanilla Smugglers quest parties use caravan templates, so they follow **Caravan Troops**.
-- **Horse Bandits:** Optional MCM **Horse Bandits (Mod Support)** when **[Horse Bandits](https://www.nexusmods.com/mountandblade2bannerlord/mods/14448)** is enabled. Hidden if that mod is not in the load order.
+- **Caravan / Smugglers / War Sails convoys:** Female Armed Traders and Caravan Guards (land). War Sails naval/convoy caravan troops (`naval_*`) use the same **Caravan Troops** switch. Smugglers quest parties use land caravan templates.
+- **Horse Bandits:** Optional MCM **HorseBandits (Mod Support)** when **[Horse Bandits](https://www.nexusmods.com/mountandblade2bannerlord/mods/14448)** is enabled. Hidden entirely if that mod is not in the load order.
 - **Camel Cavalry:** Female camel upgrades when **[Camel Cavalry](https://www.nexusmods.com/mountandblade2bannerlord/mods/14240)** is installed (via Aserai / Khuzait recruit switches).
 - **Raise Your Banner:** Quiet auto-resolve fix for empty banner-bearer battle equipment when **[Raise Your Banner](https://www.nexusmods.com/mountandblade2bannerlord/mods/3253)** is loaded.
 - **War Sails:** Female Nord recruits, militia, marines, and Corsairs.
@@ -28,7 +29,7 @@ This is a direct continuation and upgrade of **[Female Troops Reborn V1.7.0](htt
 - **Minor factions:** Ghilman, Legion of the Betrayed, Skolderbroda, Company of the Golden Boar, Beni Zilal, Wolfskins, Hidden Hand, Lake Rats, Brotherhood of the Woods, Embers of the Flame, Jawwal, Karakhergit, Forest People, Eleftheroi
 - **Mercenaries:** Eastern and Western sellswords, mounted lines, crossbows (Sword Sisters stay vanilla; T6 upgrades are extra)
 - **Gangsters:** All three tiers
-- **Caravan troops:** Armed Trader, Caravan Guard, Veteran Caravan Guard (all cultures, Nord with War Sails); also used by Smugglers quest parties
+- **Caravan troops:** Armed Trader, Caravan Guard, Veteran Caravan Guard (all cultures, Nord with War Sails); War Sails naval/convoy counterparts; also used by Smugglers quest parties
 - **Bandits:** Looters, Sea Raiders, Mountain, Forest, Desert, Steppe, Corsairs, Army of Poachers
 - **Horse Bandits line:** when that mod is loaded
 - **War Sails marines:** Empire, Sturgia, Aserai, Battania, Vlandia
@@ -44,7 +45,7 @@ At 0% new troops of that group stay male. At 100% every new troop of that group 
 
 **Bandits:** Female bandits appear in parties, hideouts, chiefs, and bosses when that line’s switch is on. Deserters follow Looters. Northern pirates follow Sea Raiders. With War Sails, female Sea Raiders use the Nord upgrade exit.
 
-**Upgrades:** Aserai and Khuzait female recruits can gain female camel upgrades when Camel Cavalry is installed. War Sails female land troops can gain an extra marine upgrade. Those links follow the matching MCM switches.
+**Upgrades:** Aserai and Khuzait female recruits can gain female camel upgrades when Camel Cavalry is installed. War Sails female land troops can gain an extra marine upgrade. Those links follow the matching MCM switches. Branch wiring runs after character data is ready (session launch / daily tick / MCM change), not during early game start, so tools like Crash Doctor do not treat half-loaded troops as broken XML.
 
 **Encyclopedia:** Female lines show while their group is on and any required optional mod is present. Reopen the page after changing a switch.
 
@@ -62,11 +63,11 @@ At 0% new troops of that group stay male. At 100% every new troop of that group 
 | **Troops → Mercenaries** | One group |
 | **Troops → Gangsters** | One group |
 | **Troops → War Sails Marines** | Empire, Sturgia, Aserai, Battania, Vlandia |
-| **Troops → Caravan Troops** | Armed Traders / Caravan Guards (incl. Smugglers parties) |
-| **Troops → Conspiracy** | Anti-Empire, Imperial |
-| **Bandits** | Looters, Sea Raiders, Mountain, Forest, Desert, Steppe, Corsairs, Army of Poachers, Horse Bandits (Mod Support) |
+| **Troops → Caravan Troops** | Armed Traders / Caravan Guards (incl. Smugglers parties and War Sails naval convoys) |
+| **Troops → Conspiracy** | Anti-Empire, Imperial (last under Troops) |
+| **Bandits** | Looters, Sea Raiders, Mountain, Forest, Desert, Steppe, Corsairs, Army of Poachers, HorseBandits (Mod Support) |
 
-**Horse Bandits (Mod Support):** Shown only when Horse Bandits is enabled. Default on at 25%. Independent of the vanilla bandit-line sliders (different troop IDs). Female Highwaywoman follows Horse Bandits’ champion branch.
+**HorseBandits (Mod Support):** Shown only when Horse Bandits is enabled; omitted from MCM if that mod is not installed. Default on at 25%. Independent of the vanilla bandit-line sliders (different troop IDs). Female Highwaywoman follows Horse Bandits’ champion branch.
 
 **Camel Cavalry:** No separate page. Aserai and Khuzait recruit switches also control female camel upgrades when Camel Cavalry is installed.
 

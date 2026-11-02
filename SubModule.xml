@@ -96,6 +96,14 @@
 			</IncludedGameTypes>
 		</XmlNode>
 		<XmlNode>
+			<XmlName id="NPCCharacters" path="ftr_naval_caravan_troops"/>
+			<IncludedGameTypes>
+				<GameType value="Campaign"/>
+				<GameType value="CampaignStoryMode"/>
+				<GameType value="CustomGame"/>
+			</IncludedGameTypes>
+		</XmlNode>
+		<XmlNode>
 			<XmlName id="NPCCharacters" path="ftr_sword_sister_t6"/>
 			<IncludedGameTypes>
 				<GameType value="Campaign"/>

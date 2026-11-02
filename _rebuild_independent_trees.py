@@ -1,9 +1,19 @@
 # One-shot rebuild: independent female trees, no vanilla ID overwrites.
+# Requires BANNERLORD_DIR (folder that contains Bannerlord.exe / Modules / bin), or pass it as argv[1].
+import os
 import re
+import sys
 from pathlib import Path
 
 xml_path = Path(__file__).resolve().parent / "ModuleData" / "spfnpccharacters.xml"
-van_path = Path(r"D:\Games\Steam\steamapps\common\Mount & Blade II Bannerlord\Modules\SandBoxCore\ModuleData\spnpccharacters.xml")
+bannerlord_dir = Path(sys.argv[1] if len(sys.argv) > 1 else os.environ.get("BANNERLORD_DIR", "")).expanduser()
+if not bannerlord_dir or not bannerlord_dir.is_dir():
+    raise SystemExit(
+        "Set BANNERLORD_DIR to your Bannerlord install folder, or pass that folder as the first argument."
+    )
+van_path = bannerlord_dir / "Modules" / "SandBoxCore" / "ModuleData" / "spnpccharacters.xml"
+if not van_path.is_file():
+    raise SystemExit("Vanilla characters not found: %s" % van_path)
 
 xml = xml_path.read_text(encoding="utf-8")
 van = set(re.findall(r'<NPCCharacter\b[^>]*\bid\s*=\s*"([^"]+)"', van_path.read_text(encoding="utf-8", errors="ignore")))

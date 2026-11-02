@@ -22,7 +22,13 @@ namespace FemaleTroopsAndBandits
         internal static void Apply(FemaleTroopsSettings settings)
         {
             MBObjectManager manager = MBObjectManager.Instance;
-            if (manager == null || manager.GetObject<CharacterObject>("ftr_imperial_recruit") == null)
+            if (manager == null)
+            {
+                return;
+            }
+
+            CharacterObject probe = manager.GetObject<CharacterObject>("ftr_imperial_recruit");
+            if (probe == null || probe.Culture == null)
             {
                 return;
             }
@@ -156,7 +162,8 @@ namespace FemaleTroopsAndBandits
                 string femaleId = pending.Dequeue();
                 Entry parent = entries[femaleId];
                 CharacterObject female = manager.GetObject<CharacterObject>(femaleId);
-                if (female == null || female.UpgradeTargets == null)
+                // Skip until Culture is set — UpgradeTargets on a not-ready troop trips Crash Doctor.
+                if (female == null || female.Culture == null || female.UpgradeTargets == null)
                 {
                     continue;
                 }

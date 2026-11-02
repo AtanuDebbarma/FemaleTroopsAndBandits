@@ -39,7 +39,11 @@ namespace FemaleTroopsAndBandits
                 return;
             }
 
-            if (manager.GetObject<CharacterObject>("aserai_female_mameluke_regular") == null)
+            // Probe must exist and be fully initialized. A registered-but-not-ready
+            // CharacterObject still has Culture == null; touching UpgradeTargets then
+            // makes Crash Doctor substitute empty lists for dozens of troops.
+            CharacterObject probe = manager.GetObject<CharacterObject>("aserai_female_mameluke_regular");
+            if (!IsReady(probe))
             {
                 return;
             }
@@ -155,7 +159,7 @@ namespace FemaleTroopsAndBandits
 
             CharacterObject male = manager.GetObject<CharacterObject>(maleId);
             CharacterObject female = manager.GetObject<CharacterObject>("ftr_" + maleId);
-            if (male == null || female == null)
+            if (!IsReady(male) || !IsReady(female))
             {
                 return;
             }
@@ -235,7 +239,7 @@ namespace FemaleTroopsAndBandits
 
             CharacterObject parent = manager.GetObject<CharacterObject>(parentId);
             CharacterObject extra = manager.GetObject<CharacterObject>(extraId);
-            if (parent == null || extra == null)
+            if (!IsReady(parent) || !IsReady(extra))
             {
                 return;
             }
@@ -250,6 +254,11 @@ namespace FemaleTroopsAndBandits
                 ? With(parent.UpgradeTargets, extra)
                 : Without(parent.UpgradeTargets, extra);
             UpgradeTargetsSetter.Invoke(parent, new object[] { next });
+        }
+
+        private static bool IsReady(CharacterObject troop)
+        {
+            return troop != null && troop.Culture != null;
         }
 
         private static MethodInfo FindUpgradeTargetsSetter()

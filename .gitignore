@@ -30,3 +30,4 @@ __pycache__/
 # Local backups
 *.bak
 *.bak_*
+ModuleData/*.bak*

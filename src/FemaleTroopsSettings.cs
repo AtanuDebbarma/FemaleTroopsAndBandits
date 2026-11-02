@@ -77,26 +77,27 @@ namespace FemaleTroopsAndBandits
         private const string SturgiaName = "{=ftr_mcm_sturgia}Sturgia";
         private const string VlandiaName = "{=ftr_mcm_vlandia}Vlandia";
         private const string NordName = "{=ftr_mcm_nord}Nord";
-        private const string RecruitHint = "{=ftr_mcm_recruit_hint}Chance a new town, village, or castle recruit of this culture is female. Covers the regular and noble lines. Default 25. Off, or 0, keeps new recruits male. Recruits already hired stay as they are.";
-        private const string RecruitBranchHint = "{=ftr_mcm_recruit_branch_hint}Chance a new town, village, or castle recruit of this culture is female. Covers the regular and noble lines. Default 25. Off, or 0, keeps new recruits male. Recruits already hired stay as they are. Reopen the encyclopedia page after changing this.";
-        private const string MilitiaHint = "{=ftr_mcm_militia_hint}Chance a new militia troop of this culture is female. Default 25. Off, or 0, keeps new militia male. Militia already raised stay as they are.";
-        private const string FactionHint = "{=ftr_mcm_faction_hint}Chance a new troop of this faction is female. Default 25. Off, or 0, keeps new troops male. Troops already in parties stay as they are.";
-        private const string MercHint = "{=ftr_mcm_merc_hint}Chance a new Sellsword, Outrider, Mercenary Maceman, Hired Spear, Hired Pike, or Hired Crossbow is female. Default 25. Sword Sisters stay vanilla. Off, or 0, keeps new troops of those lines male. Troops already hired stay as they are.";
-        private const string GangHint = "{=ftr_mcm_gang_hint}Chance a new gangster is female. Default 25. Off, or 0, keeps new gangsters male. Gangsters already in parties stay as they are.";
-        private const string MarineHint = "{=ftr_mcm_marine_hint}Chance a new marine of this culture is female, and whether female land troops can upgrade into that marine line. Separate from kingdom recruits. Default 25. Off, or 0, keeps new marines male and removes that upgrade. Marines already in parties stay. Reopen the encyclopedia page after changing this.";
-        private const string BanditHint = "{=ftr_mcm_bandit_hint}Chance a new troop of this bandit line is female, including bosses and hideouts. Default 25. Off, or 0, keeps new troops male. Troops already in parties stay as they are.";
-        private const string LootersHint = "{=ftr_mcm_looters_hint}Chance a new Looter is female, including hideouts. Deserter parties are Looters, so they follow this switch. Default 25. Off, or 0, keeps new Looters male. Troops already in parties stay as they are.";
-        private const string SeaRaidersHint = "{=ftr_mcm_sea_raiders_hint}Chance a new Sea Raider troop is female, including chiefs, bosses, and hideouts. Northern pirate parties use these same troops. Default 25. Off, or 0, keeps new troops male. With War Sails, their upgrade exit follows the Nord line.";
-        private const string CorsairHint = "{=ftr_mcm_corsair_hint}Chance a new Corsair is female. Default 25. Off, or 0, keeps new Corsairs male. Does nothing when War Sails is not installed.";
-        private const string HorseBanditsHint = "{=ftr_mcm_horse_bandits_hint}Chance a new Horse Bandits troop is female (Mounted Pillager, Mounted Ransacker, and their upgrade lines, including Chief and Boss). Default 25. Off, or 0, keeps those troops male. Only shown when Horse Bandits is enabled.";
-        private const string PoachersHint = "{=ftr_mcm_poachers_hint}Chance a new Poacher in the Army of Poachers quest party is female. Default 25. Off, or 0, keeps them male.";
-        private const string CaravanHint = "{=ftr_mcm_caravan_hint}Chance a new Armed Trader, Caravan Guard, or Veteran Caravan Guard is female. Also covers Smugglers quest parties, which use those caravan troops. Default 25. Off, or 0, keeps them male. Nord lines need War Sails.";
-        private const string ConspiracyHint = "{=ftr_mcm_conspiracy_hint}Chance a new troop in these conspiracy parties is female. They are not hired and do not upgrade. Default 25. Off, or 0, keeps them male. Does nothing when Story Mode is off.";
-        private const string TroopsRootHint = "{=ftr_mcm_root_troops_hint}Kingdom recruits, militia, factions, mercenaries, gangsters, marines, caravan troops, and conspiracy. Off disables every group under Troops.";
-        private const string BanditsRootHint = "{=ftr_mcm_root_bandits_hint}Looters, sea raiders, mountain, forest, desert and steppe bandits, corsairs, Army of Poachers, and Horse Bandits when that mod is enabled. Off disables every group under Bandits.";
+        private const string RecruitHint = "{=ftr_mcm_recruit_hint}Chance a new town, village, or castle recruit of this culture is female (regular and noble). Default 25. Off or 0 keeps new recruits male.";
+        private const string RecruitBranchHint = "{=ftr_mcm_recruit_branch_hint}Chance a new town, village, or castle recruit of this culture is female (regular and noble). Default 25. Off or 0 keeps new recruits male. Reopen the encyclopedia after changing this.";
+        private const string MilitiaHint = "{=ftr_mcm_militia_hint}Chance a new militia troop of this culture is female. Default 25. Off or 0 keeps new militia male.";
+        private const string FactionHint = "{=ftr_mcm_faction_hint}Chance a new troop of this faction is female. Default 25. Off or 0 keeps new troops male.";
+        private const string MercHint = "{=ftr_mcm_merc_hint}Chance a new Sellsword, Outrider, Mercenary Maceman, Hired Spear, Hired Pike, or Hired Crossbow is female. Default 25. Sword Sisters stay vanilla. Off or 0 keeps those lines male.";
+        private const string GangHint = "{=ftr_mcm_gang_hint}Chance a new gangster is female. Default 25. Off or 0 keeps new gangsters male.";
+        private const string MarineHint = "{=ftr_mcm_marine_hint}Chance a new marine of this culture is female, and whether female land troops can upgrade into that marine line. Default 25. Off or 0 keeps marines male and removes that upgrade. Reopen the encyclopedia after changing this.";
+        private const string BanditHint = "{=ftr_mcm_bandit_hint}Chance a new troop of this bandit line is female, including bosses and hideouts. Default 25. Off or 0 keeps new troops male.";
+        private const string LootersHint = "{=ftr_mcm_looters_hint}Chance a new Looter is female, including hideouts. Deserters use Looters, so they follow this. Default 25. Off or 0 keeps new Looters male.";
+        private const string SeaRaidersHint = "{=ftr_mcm_sea_raiders_hint}Chance a new Sea Raider is female, including chiefs, bosses, and hideouts. Northern pirates use these troops. Default 25. With War Sails, upgrades follow the Nord line.";
+        private const string CorsairHint = "{=ftr_mcm_corsair_hint}Chance a new Corsair is female. Default 25. Off or 0 keeps them male. Needs War Sails.";
+        private const string HorseBanditsHint = "{=ftr_mcm_horse_bandits_hint}Chance a new HorseBandits troop is female (pillager/ransacker lines, Chief, Boss). Default 25. Off or 0 keeps them male. Only shown when HorseBandits is enabled.";
+        private const string PoachersHint = "{=ftr_mcm_poachers_hint}Chance a new Poacher in the Army of Poachers quest is female. Default 25. Off or 0 keeps them male.";
+        private const string CaravanHint = "{=ftr_mcm_caravan_hint}Chance a new Armed Trader or Caravan Guard is female. Also covers Smugglers parties and War Sails naval/convoy caravans. Default 25. Nord/naval need War Sails.";
+        private const string ConspiracyHint = "{=ftr_mcm_conspiracy_hint}Chance a new troop in these Story Mode conspiracy parties is female. Default 25. Off or 0 keeps them male.";
+        private const string TroopsRootHint = "{=ftr_mcm_root_troops_hint}Kingdom recruits, militia, factions, mercenaries, gangsters, marines, caravans, and conspiracy. Off disables every Troops group.";
+        private const string BanditsRootHint = "{=ftr_mcm_root_bandits_hint}Looters, sea/mountain/forest/desert/steppe bandits, corsairs, Army of Poachers, and HorseBandits when that mod is enabled. Off disables every Bandits group.";
         internal const string HorseBanditsGroupMarker = "ftr_mcm_horse_bandits";
+        private const string HorseBanditsGroupName = "{=ftr_mcm_horse_bandits}HorseBandits (Mod Support)";
         private const string PercentName = "{=ftr_mcm_percent_name}Female troops percent";
-        private const string PercentHint = "{=ftr_mcm_percent_hint}From 0 to 100. Default 25. 0 keeps the vanilla troops. 100 makes every new troop of this group female.";
+        private const string PercentHint = "{=ftr_mcm_percent_hint}0 to 100. Default 25. 0 keeps male troops; 100 makes every new troop of this group female.";
 
         private readonly Dictionary<string, bool> _enabled = new Dictionary<string, bool>();
         private readonly Dictionary<string, int> _percent = new Dictionary<string, int>();
@@ -980,8 +981,8 @@ namespace FemaleTroopsAndBandits
             set { SetPercent(GroupCorsairs, value); }
         }
 
-        [SettingPropertyBool("{=ftr_mcm_horse_bandits}Horse Bandits (Mod Support)", IsToggle = true, Order = 0, RequireRestart = false, HintText = HorseBanditsHint)]
-        [SettingPropertyGroup(Bandits + "/{=ftr_mcm_horse_bandits}Horse Bandits (Mod Support)", GroupOrder = 8)]
+        [SettingPropertyBool(HorseBanditsGroupName, IsToggle = true, Order = 0, RequireRestart = false, HintText = HorseBanditsHint)]
+        [SettingPropertyGroup(Bandits + "/" + HorseBanditsGroupName, GroupOrder = 8)]
         public bool HorseBandits
         {
             get { return Enabled(GroupHorseBandits); }
@@ -989,7 +990,7 @@ namespace FemaleTroopsAndBandits
         }
 
         [SettingPropertyInteger(PercentName, 0, 100, "0", Order = 1, RequireRestart = false, HintText = PercentHint)]
-        [SettingPropertyGroup(Bandits + "/{=ftr_mcm_horse_bandits}Horse Bandits (Mod Support)")]
+        [SettingPropertyGroup(Bandits + "/" + HorseBanditsGroupName)]
         public int HorseBanditsPercent
         {
             get { return ClampedPercent(GroupHorseBandits); }
@@ -1028,8 +1029,10 @@ namespace FemaleTroopsAndBandits
             set { SetPercent(GroupPoachers, value); }
         }
 
+        // Flat under Troops with GroupOrder 7 so Conspiracy sits after culture/caravan groups
+        // (nested Conspiracy/Anti-Empire had no mid-level order and sorted to the top).
         [SettingPropertyBool("{=ftr_mcm_conspiracy_anti}Anti-Empire", IsToggle = true, Order = 0, RequireRestart = false, HintText = ConspiracyHint)]
-        [SettingPropertyGroup(Conspiracy + "/{=ftr_mcm_conspiracy_anti}Anti-Empire", GroupOrder = 0)]
+        [SettingPropertyGroup(Conspiracy, GroupOrder = 7)]
         public bool ConspiracyAntiEmpire
         {
             get { return Enabled(GroupConspiracyAnti); }
@@ -1037,23 +1040,23 @@ namespace FemaleTroopsAndBandits
         }
 
         [SettingPropertyInteger(PercentName, 0, 100, "0", Order = 1, RequireRestart = false, HintText = PercentHint)]
-        [SettingPropertyGroup(Conspiracy + "/{=ftr_mcm_conspiracy_anti}Anti-Empire")]
+        [SettingPropertyGroup(Conspiracy)]
         public int ConspiracyAntiEmpirePercent
         {
             get { return ClampedPercent(GroupConspiracyAnti); }
             set { SetPercent(GroupConspiracyAnti, value); }
         }
 
-        [SettingPropertyBool("{=ftr_mcm_conspiracy_imperial}Imperial", IsToggle = true, Order = 0, RequireRestart = false, HintText = ConspiracyHint)]
-        [SettingPropertyGroup(Conspiracy + "/{=ftr_mcm_conspiracy_imperial}Imperial", GroupOrder = 1)]
+        [SettingPropertyBool("{=ftr_mcm_conspiracy_imperial}Imperial", IsToggle = true, Order = 2, RequireRestart = false, HintText = ConspiracyHint)]
+        [SettingPropertyGroup(Conspiracy)]
         public bool ConspiracyImperial
         {
             get { return Enabled(GroupConspiracyImperial); }
             set { SetEnabled(GroupConspiracyImperial, value); }
         }
 
-        [SettingPropertyInteger(PercentName, 0, 100, "0", Order = 1, RequireRestart = false, HintText = PercentHint)]
-        [SettingPropertyGroup(Conspiracy + "/{=ftr_mcm_conspiracy_imperial}Imperial")]
+        [SettingPropertyInteger(PercentName, 0, 100, "0", Order = 3, RequireRestart = false, HintText = PercentHint)]
+        [SettingPropertyGroup(Conspiracy)]
         public int ConspiracyImperialPercent
         {
             get { return ClampedPercent(GroupConspiracyImperial); }

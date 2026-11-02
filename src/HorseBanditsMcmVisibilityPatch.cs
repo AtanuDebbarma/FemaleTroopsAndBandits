@@ -89,7 +89,8 @@ namespace FemaleTroopsAndBandits
             }
 
             if (!string.IsNullOrEmpty(groupName)
-                && groupName.IndexOf("Horse Bandits (Mod Support)") >= 0)
+                && (groupName.IndexOf("HorseBandits (Mod Support)") >= 0
+                    || groupName.IndexOf("Horse Bandits (Mod Support)") >= 0))
             {
                 return true;
             }
