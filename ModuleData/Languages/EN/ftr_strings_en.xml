@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+	<tags>
+		<tag language="English"/>
+	</tags>
+	<strings>
+		<string id="ftr_mcm_title" text="Female Troops and Bandits"/>
+		<string id="ftr_mcm_root_troops" text="Troops"/>
+		<string id="ftr_mcm_root_bandits" text="Bandits"/>
+		<string id="ftr_mcm_root_troops_hint" text="Kingdom recruits, militia, factions, mercenaries, gangsters, marines, caravan troops, and conspiracy. Off disables every group under Troops."/>
+		<string id="ftr_mcm_root_bandits_hint" text="Looters, sea raiders, mountain, forest, desert and steppe bandits, corsairs, Army of Poachers, and Horse Bandits when that mod is enabled. Off disables every group under Bandits."/>
+		<string id="ftr_mcm_horse_bandits" text="Horse Bandits (Mod Support)"/>
+		<string id="ftr_mcm_horse_bandits_hint" text="Chance a new Horse Bandits troop is female (Mounted Pillager, Mounted Ransacker, and their upgrade lines, including Chief and Boss). Default 25. Off, or 0, keeps those troops male. Only shown when Horse Bandits is enabled."/>
+		<string id="ftr_mcm_group_kingdom" text="Kingdom Recruits"/>
+		<string id="ftr_mcm_group_militia" text="Militia"/>
+		<string id="ftr_mcm_group_factions" text="Minor Factions"/>
+		<string id="ftr_mcm_group_marines" text="War Sails Marines"/>
+		<string id="ftr_mcm_caravan" text="Caravan Troops"/>
+		<string id="ftr_mcm_poachers" text="Army of Poachers"/>
+		<string id="ftr_mcm_empire" text="Empire"/>
+		<string id="ftr_mcm_aserai" text="Aserai"/>
+		<string id="ftr_mcm_battania" text="Battania"/>
+		<string id="ftr_mcm_khuzait" text="Khuzait"/>
+		<string id="ftr_mcm_sturgia" text="Sturgia"/>
+		<string id="ftr_mcm_vlandia" text="Vlandia"/>
+		<string id="ftr_mcm_nord" text="Nord"/>
+		<string id="ftr_mcm_ghilman" text="Ghilman"/>
+		<string id="ftr_mcm_legion" text="Legion of the Betrayed"/>
+		<string id="ftr_mcm_skolderbroda" text="Skolderbroda"/>
+		<string id="ftr_mcm_boar" text="Company of the Golden Boar"/>
+		<string id="ftr_mcm_beni_zilal" text="Beni Zilal"/>
+		<string id="ftr_mcm_wolfskins" text="Wolfskins"/>
+		<string id="ftr_mcm_hidden_hand" text="Hidden Hand"/>
+		<string id="ftr_mcm_lake_rats" text="Lake Rats"/>
+		<string id="ftr_mcm_brotherhood" text="Brotherhood of the Woods"/>
+		<string id="ftr_mcm_embers" text="Embers of the Flame"/>
+		<string id="ftr_mcm_jawwal" text="Jawwal"/>
+		<string id="ftr_mcm_karakhergit" text="Karakhergit"/>
+		<string id="ftr_mcm_forest_people" text="Forest People"/>
+		<string id="ftr_mcm_eleftheroi" text="Eleftheroi"/>
+		<string id="ftr_mcm_mercenaries" text="Mercenaries"/>
+		<string id="ftr_mcm_gangsters" text="Gangsters"/>
+		<string id="ftr_mcm_recruit_hint" text="Chance a new town, village, or castle recruit of this culture is female. Covers the regular and noble lines. Default 25. Off, or 0, keeps new recruits male. Recruits already hired stay as they are."/>
+		<string id="ftr_mcm_recruit_branch_hint" text="Chance a new town, village, or castle recruit of this culture is female. Covers the regular and noble lines. Default 25. Off, or 0, keeps new recruits male. Recruits already hired stay as they are. Reopen the encyclopedia page after changing this."/>
+		<string id="ftr_mcm_militia_hint" text="Chance a new militia troop of this culture is female. Default 25. Off, or 0, keeps new militia male. Militia already raised stay as they are."/>
+		<string id="ftr_mcm_faction_hint" text="Chance a new troop of this faction is female. Default 25. Off, or 0, keeps new troops male. Troops already in parties stay as they are."/>
+		<string id="ftr_mcm_merc_hint" text="Chance a new Sellsword, Outrider, Mercenary Maceman, Hired Spear, Hired Pike, or Hired Crossbow is female. Default 25. Sword Sisters stay vanilla. Off, or 0, keeps new troops of those lines male. Troops already hired stay as they are."/>
+		<string id="ftr_mcm_gang_hint" text="Chance a new gangster is female. Default 25. Off, or 0, keeps new gangsters male. Gangsters already in parties stay as they are."/>
+		<string id="ftr_mcm_marine_hint" text="Chance a new marine of this culture is female, and whether female land troops can upgrade into that marine line. Separate from kingdom recruits. Default 25. Off, or 0, keeps new marines male and removes that upgrade. Marines already in parties stay. Reopen the encyclopedia page after changing this."/>
+		<string id="ftr_mcm_group_bandits" text="Bandits"/>
+		<string id="ftr_mcm_group_conspiracy" text="Conspiracy"/>
+		<string id="ftr_mcm_looters" text="Looters"/>
+		<string id="ftr_mcm_sea_raiders" text="Sea Raiders"/>
+		<string id="ftr_mcm_mountain" text="Mountain Bandits"/>
+		<string id="ftr_mcm_forest_bandits" text="Forest Bandits"/>
+		<string id="ftr_mcm_desert_bandits" text="Desert Bandits"/>
+		<string id="ftr_mcm_steppe_bandits" text="Steppe Bandits"/>
+		<string id="ftr_mcm_corsairs" text="Corsairs"/>
+		<string id="ftr_mcm_conspiracy_anti" text="Anti-Empire"/>
+		<string id="ftr_mcm_conspiracy_imperial" text="Imperial"/>
+		<string id="ftr_mcm_bandit_hint" text="Chance a new troop of this bandit line is female, including bosses and hideouts. Default 25. Off, or 0, keeps new troops male. Troops already in parties stay as they are."/>
+		<string id="ftr_mcm_looters_hint" text="Chance a new Looter is female, including hideouts. Deserter parties are Looters, so they follow this switch. Default 25. Off, or 0, keeps new Looters male. Troops already in parties stay as they are."/>
+		<string id="ftr_mcm_sea_raiders_hint" text="Chance a new Sea Raider troop is female, including chiefs, bosses, and hideouts. Northern pirate parties use these same troops. Default 25. Off, or 0, keeps new troops male. With War Sails, their upgrade exit follows the Nord line."/>
+		<string id="ftr_mcm_corsair_hint" text="Chance a new Corsair is female. Default 25. Off, or 0, keeps new Corsairs male. Does nothing when War Sails is not installed."/>
+		<string id="ftr_mcm_poachers_hint" text="Chance a new Poacher in the Army of Poachers quest party is female. Default 25. Off, or 0, keeps them male."/>
+		<string id="ftr_mcm_caravan_hint" text="Chance a new Armed Trader, Caravan Guard, or Veteran Caravan Guard is female. Also covers Smugglers quest parties, which use those caravan troops. Default 25. Off, or 0, keeps them male. Nord lines need War Sails."/>
+		<string id="ftr_mcm_conspiracy_hint" text="Chance a new troop in these conspiracy parties is female. They are not hired and do not upgrade. Default 25. Off, or 0, keeps them male. Does nothing when Story Mode is off."/>
+		<string id="ftr_mcm_percent_name" text="Female troops percent"/>
+		<string id="ftr_mcm_percent_hint" text="From 0 to 100. Default 25. 0 keeps the vanilla troops. 100 makes every new troop of this group female."/>
+	</strings>
+</base>

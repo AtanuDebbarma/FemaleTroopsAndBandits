@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Items>
+	<!-- Clone of vanilla Hickory Crossbow (crossbow_d) without CantReloadOnHorseback so T6 Gallant Sisters can use it mounted. -->
+	<Item
+		id="ftr_sister_mounted_heavy_crossbow"
+		name="{=ftr_sister_mounted_xbow}Sisterhood Mounted Hickory Crossbow"
+		body_name="bo_composite_crossbows"
+		mesh="crossbow_d"
+		culture="Culture.empire"
+		weight="2.2"
+		appearance="0.6"
+		Type="Crossbow"
+		difficulty="40"
+		AmmoOffset="0.0, 0.02131, 0.22975"
+		item_holsters="crossbow_back:bow_hip:mace_right_hip:bow_hip_2"
+		holster_position_shift="0.02,0,-0.4"
+		is_merchandise="false">
+		<ItemComponent>
+			<Weapon
+				weapon_class="Crossbow"
+				ammo_class="Bolt"
+				ammo_limit="1"
+				thrust_speed="92"
+				speed_rating="62"
+				missile_speed="90"
+				weapon_length="95"
+				accuracy="99"
+				thrust_damage="93"
+				thrust_damage_type="Pierce"
+				item_usage="crossbow"
+				reload_phase_count="2"
+				physics_material="wood_weapon"
+				center_of_mass="0,0,0.4"
+				modifier_group="crossbow">
+				<WeaponFlags
+					RangedWeapon="true"
+					HasString="true"
+					NotUsableWithOneHand="true"
+					TwoHandIdleOnMount="true" />
+			</Weapon>
+		</ItemComponent>
+		<Flags />
+	</Item>
+
+	<!-- Heavy Quarrels clone with larger quiver for T6 Sword Sisters only. -->
+	<Item
+		id="ftr_sister_heavy_quarrels"
+		name="{=ftr_sister_bolts}Sisterhood Heavy Quarrels"
+		body_name="bo_capsule_arrow"
+		holster_body_name="bo_bolt_bl_d_quiver"
+		mesh="bolt_bl_d"
+		holster_mesh="bolt_bl_d_quiver"
+		holster_mesh_with_weapon="bolt_bl_d_quiver"
+		flying_mesh="bolt_bl_flying"
+		culture="Culture.empire"
+		weight="0.06"
+		appearance="1"
+		Type="Bolts"
+		item_holsters="quiver_bolts:quiver_bolts_2:quiver_back_middle:quiver_back_top"
+		is_merchandise="false">
+		<ItemComponent>
+			<Weapon
+				weapon_class="Bolt"
+				stack_amount="30"
+				thrust_speed="0"
+				thrust_damage="3"
+				thrust_damage_type="Pierce"
+				speed_rating="0"
+				missile_speed="10"
+				weapon_length="37"
+				item_usage=""
+				passby_sound_code="event:/mission/combat/missile/passby"
+				rotation="180, 0, 0"
+				physics_material="missile"
+				sticking_position="0,-0.37,0"
+				sticking_rotation="90,0,0"
+				center_of_mass="0,0,-0.1"
+				modifier_group="bolt">
+				<WeaponFlags
+					AttachAmmoToVisual="true"
+					Consumable="true"
+					AmmoSticksWhenShot="true"
+					AmmoBreaksOnBounceBack="true" />
+			</Weapon>
+		</ItemComponent>
+		<Flags
+			ForceAttachOffHandPrimaryItemBone="true" />
+	</Item>
+</Items>

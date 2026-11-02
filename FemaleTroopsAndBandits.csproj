@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!-- Local settings such as the game folder go in FemaleTroopsAndBandits.user.props, which git ignores. -->
+  <Import Project="FemaleTroopsAndBandits.user.props" Condition="Exists('FemaleTroopsAndBandits.user.props')" />
+
+  <PropertyGroup>
+    <BannerlordDir Condition="'$(BannerlordDir)' == ''">$(BANNERLORD_DIR)</BannerlordDir>
+    <!-- A project inside <game>\Modules\FemaleTroopsAndBandits finds the game two folders up. -->
+    <BannerlordDir Condition="'$(BannerlordDir)' == '' And Exists('$(MSBuildThisFileDirectory)..\..\bin\Win64_Shipping_Client\TaleWorlds.CampaignSystem.dll')">$(MSBuildThisFileDirectory)..\..\</BannerlordDir>
+    <BannerlordDir Condition="'$(BannerlordDir)' == ''">C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord</BannerlordDir>
+    <BannerlordRoot>$(BannerlordDir)</BannerlordRoot>
+    <BannerlordRoot Condition="!HasTrailingSlash('$(BannerlordRoot)')">$(BannerlordRoot)\</BannerlordRoot>
+    <BannerlordBin>$(BannerlordRoot)bin\Win64_Shipping_Client\</BannerlordBin>
+    <BannerlordModules>$(BannerlordRoot)Modules\</BannerlordModules>
+    <DeployToGame Condition="'$(DeployToGame)' == ''">false</DeployToGame>
+
+    <Configuration Condition="'$(Configuration)' == ''">Release</Configuration>
+    <Platform Condition="'$(Platform)' == ''">x64</Platform>
+    <ProjectGuid>{A7D2E4F1-3C58-4B9A-91E6-2F8D0C5B7A14}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>FemaleTroopsAndBandits</RootNamespace>
+    <AssemblyName>FemaleTroopsAndBandits</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <LangVersion>5</LangVersion>
+    <PlatformTarget>x64</PlatformTarget>
+    <Optimize>true</Optimize>
+    <DebugSymbols>false</DebugSymbols>
+    <DebugType>none</DebugType>
+    <Deterministic>true</Deterministic>
+    <OutputPath>bin\Win64_Shipping_Client\</OutputPath>
+    <IntermediateOutputPath>obj\</IntermediateOutputPath>
+    <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+
+  <!-- Machines without the .NET Framework 4.7.2 targeting pack build against the installed runtime instead. -->
+  <PropertyGroup Condition="!Exists('$(MSBuildProgramFiles32)\Reference Assemblies\Microsoft\Framework\.NETFramework\$(TargetFrameworkVersion)\mscorlib.dll')">
+    <FrameworkPathOverride>$(WINDIR)\Microsoft.NET\Framework64\v4.0.30319</FrameworkPathOverride>
+    <BypassFrameworkInstallChecks>true</BypassFrameworkInstallChecks>
+    <NetStandardPath>$(FrameworkPathOverride)\netstandard.dll</NetStandardPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(NetStandardPath)' == ''">
+    <NetStandardPath>$(MSBuildProgramFiles32)\Reference Assemblies\Microsoft\Framework\.NETFramework\$(TargetFrameworkVersion)\Facades\netstandard.dll</NetStandardPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="netstandard">
+      <HintPath>$(NetStandardPath)</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="TaleWorlds.MountAndBlade">
+      <HintPath>$(BannerlordBin)TaleWorlds.MountAndBlade.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="TaleWorlds.CampaignSystem">
+      <HintPath>$(BannerlordBin)TaleWorlds.CampaignSystem.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="TaleWorlds.Core">
+      <HintPath>$(BannerlordBin)TaleWorlds.Core.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="TaleWorlds.Library">
+      <HintPath>$(BannerlordBin)TaleWorlds.Library.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="TaleWorlds.ModuleManager">
+      <HintPath>$(BannerlordBin)TaleWorlds.ModuleManager.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="TaleWorlds.Localization">
+      <HintPath>$(BannerlordBin)TaleWorlds.Localization.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="TaleWorlds.ObjectSystem">
+      <HintPath>$(BannerlordBin)TaleWorlds.ObjectSystem.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="0Harmony">
+      <HintPath>$(BannerlordModules)Bannerlord.Harmony\bin\Win64_Shipping_Client\0Harmony.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="MCMv5">
+      <HintPath>$(BannerlordModules)Bannerlord.MBOptionScreen\bin\Win64_Shipping_Client\MCMv5.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="src\*.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="SubModule.xml" />
+    <None Include="ModuleData\**\*" />
+  </ItemGroup>
+
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+
+  <Target Name="CheckBannerlordDir" BeforeTargets="ResolveAssemblyReferences">
+    <Error Condition="!Exists('$(BannerlordBin)TaleWorlds.CampaignSystem.dll')" Text="Bannerlord was not found in '$(BannerlordDir)'. Set BannerlordDir in FemaleTroopsAndBandits.user.props, set the BANNERLORD_DIR environment variable, or pass /p:BannerlordDir=&quot;...&quot;." />
+    <Error Condition="!Exists('$(BannerlordModules)Bannerlord.Harmony\bin\Win64_Shipping_Client\0Harmony.dll')" Text="Harmony was not found in '$(BannerlordModules)Bannerlord.Harmony'. Install Harmony before building." />
+    <Error Condition="!Exists('$(BannerlordModules)Bannerlord.MBOptionScreen\bin\Win64_Shipping_Client\MCMv5.dll')" Text="Mod Configuration Menu was not found in '$(BannerlordModules)Bannerlord.MBOptionScreen'. Install MCM before building." />
+  </Target>
+
+  <Target Name="DeployToGame" AfterTargets="Build" Condition="'$(DeployToGame)' == 'true'">
+    <ItemGroup>
+      <ModuleDataFiles Include="ModuleData\**\*" />
+    </ItemGroup>
+    <Copy SourceFiles="SubModule.xml" DestinationFolder="$(BannerlordModules)FemaleTroopsAndBandits\" />
+    <Copy SourceFiles="@(ModuleDataFiles)" DestinationFiles="@(ModuleDataFiles->'$(BannerlordModules)FemaleTroopsAndBandits\ModuleData\%(RecursiveDir)%(Filename)%(Extension)')" />
+    <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(BannerlordModules)FemaleTroopsAndBandits\bin\Win64_Shipping_Client\" />
+    <Message Importance="high" Text="Deployed Female Troops and Bandits to $(BannerlordModules)FemaleTroopsAndBandits" />
+  </Target>
+</Project>

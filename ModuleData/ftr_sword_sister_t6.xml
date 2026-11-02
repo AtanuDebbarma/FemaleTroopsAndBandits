@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<NPCCharacters>
+	<!--
+		T6 Sword Sister upgrades (FTR-only).
+		Armor from Imperial Sergeant Crossbowman.
+		Melee: top empire T5 swords (Thamaskene / noble) + raised 1H/2H/Pole/Ath.
+		Ranged skills keep Sister Crossbow 150 where better.
+		Shield = reinforced_kite.
+		Gallant: mounted heavy crossbow + t3 empire horse + PackMaster harness.
+	-->
+
+	<NPCCharacter
+		id="ftr_sword_sisters_veteran_t6"
+		is_female="true"
+		default_group="Ranged"
+		level="31"
+		name="{=ftr_ss_vet_t6}Upgraded Veteran Sword Sister"
+		occupation="Mercenary"
+		culture="Culture.neutral_culture">
+		<face>
+			<face_key_template value="BodyProperty.townswoman_empire" />
+		</face>
+		<skills>
+			<skill id="Athletics" value="160" />
+			<skill id="Riding" value="50" />
+			<skill id="OneHanded" value="170" />
+			<skill id="TwoHanded" value="90" />
+			<skill id="Polearm" value="110" />
+			<skill id="Bow" value="80" />
+			<skill id="Crossbow" value="160" />
+			<skill id="Throwing" value="70" />
+		</skills>
+		<upgrade_targets></upgrade_targets>
+		<Equipments>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.crossbow_d" />
+				<equipment slot="Item1" id="Item.ftr_sister_heavy_quarrels" />
+				<equipment slot="Item2" id="Item.empire_sword_6_t5" />
+				<equipment slot="Item3" id="Item.reinforced_kite_shield" />
+				<equipment slot="Body" id="Item.imperial_mail_vest" />
+				<equipment slot="Gloves" id="Item.reinforced_padded_mitten" />
+				<equipment slot="Leg" id="Item.strapped_mail_chausses" />
+				<equipment slot="Head" id="Item.ironlame_roundkettle_over_imperial_mail" />
+				<equipment slot="Cape" id="Item.imperial_studded_strip_shoulders" />
+			</EquipmentRoster>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.crossbow_d" />
+				<equipment slot="Item1" id="Item.ftr_sister_heavy_quarrels" />
+				<equipment slot="Item2" id="Item.empire_noble_sword_1_t5" />
+				<equipment slot="Item3" id="Item.reinforced_kite_shield" />
+				<equipment slot="Body" id="Item.imperial_mail_vest" />
+				<equipment slot="Gloves" id="Item.reinforced_padded_mitten" />
+				<equipment slot="Leg" id="Item.strapped_mail_chausses" />
+				<equipment slot="Head" id="Item.leatherlame_roundkettle_over_imperial_mail" />
+				<equipment slot="Cape" id="Item.imperial_studded_strip_shoulders" />
+			</EquipmentRoster>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.crossbow_d" />
+				<equipment slot="Item1" id="Item.ftr_sister_heavy_quarrels" />
+				<equipment slot="Item2" id="Item.empire_sword_6_t5" />
+				<equipment slot="Item3" id="Item.reinforced_kite_shield" />
+				<equipment slot="Body" id="Item.imperial_mail_vest" />
+				<equipment slot="Gloves" id="Item.reinforced_padded_mitten" />
+				<equipment slot="Leg" id="Item.strapped_mail_chausses" />
+				<equipment slot="Head" id="Item.roundkettle_over_imperial_mail" />
+				<equipment slot="Cape" id="Item.imperial_studded_strip_shoulders" />
+			</EquipmentRoster>
+			<EquipmentSet id="empire_troop_civilian_template_t3" equipmentType="Civilian" />
+		</Equipments>
+	</NPCCharacter>
+
+	<NPCCharacter
+		id="ftr_sword_sisters_gallant_t6"
+		is_female="true"
+		default_group="HorseArcher"
+		level="31"
+		name="{=ftr_ss_gal_t6}Upgraded Gallant Sword Sister"
+		upgrade_requires="ItemCategory.war_horse"
+		occupation="Mercenary"
+		culture="Culture.neutral_culture">
+		<face>
+			<face_key_template value="BodyProperty.townswoman_empire" />
+		</face>
+		<skills>
+			<skill id="Athletics" value="150" />
+			<skill id="Riding" value="150" />
+			<skill id="OneHanded" value="170" />
+			<skill id="TwoHanded" value="90" />
+			<skill id="Polearm" value="110" />
+			<skill id="Bow" value="80" />
+			<skill id="Crossbow" value="160" />
+			<skill id="Throwing" value="70" />
+		</skills>
+		<upgrade_targets></upgrade_targets>
+		<Equipments>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.ftr_sister_mounted_heavy_crossbow" />
+				<equipment slot="Item1" id="Item.ftr_sister_heavy_quarrels" />
+				<equipment slot="Item2" id="Item.empire_sword_6_t5" />
+				<equipment slot="Item3" id="Item.reinforced_kite_shield" />
+				<equipment slot="Body" id="Item.imperial_mail_vest" />
+				<equipment slot="Gloves" id="Item.reinforced_padded_mitten" />
+				<equipment slot="Leg" id="Item.strapped_mail_chausses" />
+				<equipment slot="Head" id="Item.ironlame_roundkettle_over_imperial_mail" />
+				<equipment slot="Cape" id="Item.imperial_studded_strip_shoulders" />
+			</EquipmentRoster>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.ftr_sister_mounted_heavy_crossbow" />
+				<equipment slot="Item1" id="Item.ftr_sister_heavy_quarrels" />
+				<equipment slot="Item2" id="Item.empire_noble_sword_1_t5" />
+				<equipment slot="Item3" id="Item.reinforced_kite_shield" />
+				<equipment slot="Body" id="Item.imperial_mail_vest" />
+				<equipment slot="Gloves" id="Item.reinforced_padded_mitten" />
+				<equipment slot="Leg" id="Item.strapped_mail_chausses" />
+				<equipment slot="Head" id="Item.leatherlame_roundkettle_over_imperial_mail" />
+				<equipment slot="Cape" id="Item.imperial_studded_strip_shoulders" />
+			</EquipmentRoster>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.ftr_sister_mounted_heavy_crossbow" />
+				<equipment slot="Item1" id="Item.ftr_sister_heavy_quarrels" />
+				<equipment slot="Item2" id="Item.empire_sword_6_t5" />
+				<equipment slot="Item3" id="Item.reinforced_kite_shield" />
+				<equipment slot="Body" id="Item.imperial_mail_vest" />
+				<equipment slot="Gloves" id="Item.reinforced_padded_mitten" />
+				<equipment slot="Leg" id="Item.strapped_mail_chausses" />
+				<equipment slot="Head" id="Item.roundkettle_over_imperial_mail" />
+				<equipment slot="Cape" id="Item.imperial_studded_strip_shoulders" />
+			</EquipmentRoster>
+			<EquipmentSet id="empire_troop_civilian_template_t3" equipmentType="Civilian" />
+			<equipment slot="Horse" id="Item.t3_empire_horse" />
+			<equipment slot="HorseHarness" id="Item.steppe_half_barding" />
+		</Equipments>
+	</NPCCharacter>
+</NPCCharacters>

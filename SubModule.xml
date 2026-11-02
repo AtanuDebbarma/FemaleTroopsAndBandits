@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Module>
+	<Name value="Female Troops and Bandits"/>
+	<Id value="FemaleTroopsAndBandits"/>
+	<Version value="v1.0.0"/>
+	<DefaultModule value="false"/>
+	<ModuleCategory value="Singleplayer"/>
+	<ModuleType value="Community"/>
+	<Official value="false"/>
+	<DependedModules>
+		<DependedModule Id="Bannerlord.Harmony" DependentVersion="v2.4.2.248"/>
+		<DependedModule Id="Native" DependentVersion="v1.4.8"/>
+		<DependedModule Id="SandBoxCore" DependentVersion="v1.4.8"/>
+		<DependedModule Id="Sandbox" DependentVersion="v1.4.8"/>
+		<DependedModule Id="Bannerlord.MBOptionScreen" DependentVersion="v5.12.3"/>
+		<DependedModule Id="StoryMode" Optional="true"/>
+		<DependedModule Id="CustomBattle" Optional="true"/>
+		<DependedModule Id="NavalDLC" Optional="true"/>
+		<DependedModule Id="CastleMarketTowns" Optional="true"/>
+		<DependedModule Id="CamelCavalry" Optional="true"/>
+		<DependedModule Id="HorseBandits" Optional="true"/>
+		<DependedModule Id="RaiseYourBanner" Optional="true"/>
+	</DependedModules>
+	<DependedModuleMetadatas>
+		<DependedModuleMetadata id="Bannerlord.Harmony" order="LoadBeforeThis" version="v2.4.2.248"/>
+		<DependedModuleMetadata id="Native" order="LoadBeforeThis" version="v1.4.8"/>
+		<DependedModuleMetadata id="SandBoxCore" order="LoadBeforeThis" version="v1.4.8"/>
+		<DependedModuleMetadata id="Sandbox" order="LoadBeforeThis" version="v1.4.8"/>
+		<DependedModuleMetadata id="Bannerlord.MBOptionScreen" order="LoadBeforeThis" version="v5.12.3"/>
+		<DependedModuleMetadata id="StoryMode" order="LoadBeforeThis" optional="true"/>
+		<DependedModuleMetadata id="CustomBattle" order="LoadBeforeThis" optional="true"/>
+		<DependedModuleMetadata id="NavalDLC" order="LoadBeforeThis" optional="true"/>
+		<DependedModuleMetadata id="CastleMarketTowns" order="LoadBeforeThis" optional="true"/>
+		<DependedModuleMetadata id="CamelCavalry" order="LoadBeforeThis" optional="true"/>
+		<DependedModuleMetadata id="HorseBandits" order="LoadBeforeThis" optional="true"/>
+		<DependedModuleMetadata id="RaiseYourBanner" order="LoadBeforeThis" optional="true"/>
+	</DependedModuleMetadatas>
+	<SubModules>
+		<SubModule>
+			<Name value="FemaleTroopsAndBandits"/>
+			<DLLName value="FemaleTroopsAndBandits.dll"/>
+			<SubModuleClassType value="FemaleTroopsAndBandits.FemaleTroopsAndBanditsSubModule"/>
+			<Tags>
+				<Tag key="DedicatedServerType" value="none"/>
+				<Tag key="IsNoRenderModeElement" value="false"/>
+			</Tags>
+		</SubModule>
+	</SubModules>
+	<Xmls>
+		<XmlNode>
+			<XmlName id="BodyProperties" path="ftr_bodyproperties"/>
+			<IncludedGameTypes>
+				<GameType value="Campaign"/>
+				<GameType value="CampaignStoryMode"/>
+				<GameType value="CustomGame"/>
+			</IncludedGameTypes>
+		</XmlNode>
+		<XmlNode>
+			<XmlName id="Items" path="ftr_items"/>
+			<IncludedGameTypes>
+				<GameType value="Campaign"/>
+				<GameType value="CampaignStoryMode"/>
+				<GameType value="CustomGame"/>
+			</IncludedGameTypes>
+		</XmlNode>
+		<XmlNode>
+			<XmlName id="NPCCharacters" path="spfnpccharacters"/>
+			<IncludedGameTypes>
+				<GameType value="Campaign"/>
+				<GameType value="CampaignStoryMode"/>
+				<GameType value="CustomGame"/>
+			</IncludedGameTypes>
+		</XmlNode>
+		<XmlNode>
+			<XmlName id="NPCCharacters" path="ftr_extra_troops"/>
+			<IncludedGameTypes>
+				<GameType value="Campaign"/>
+				<GameType value="CampaignStoryMode"/>
+				<GameType value="CustomGame"/>
+			</IncludedGameTypes>
+		</XmlNode>
+		<XmlNode>
+			<XmlName id="NPCCharacters" path="ftr_bandit_troops"/>
+			<IncludedGameTypes>
+				<GameType value="Campaign"/>
+				<GameType value="CampaignStoryMode"/>
+				<GameType value="CustomGame"/>
+			</IncludedGameTypes>
+		</XmlNode>
+		<XmlNode>
+			<XmlName id="NPCCharacters" path="ftr_quest_caravan_troops"/>
+			<IncludedGameTypes>
+				<GameType value="Campaign"/>
+				<GameType value="CampaignStoryMode"/>
+				<GameType value="CustomGame"/>
+			</IncludedGameTypes>
+		</XmlNode>
+		<XmlNode>
+			<XmlName id="NPCCharacters" path="ftr_sword_sister_t6"/>
+			<IncludedGameTypes>
+				<GameType value="Campaign"/>
+				<GameType value="CampaignStoryMode"/>
+				<GameType value="CustomGame"/>
+			</IncludedGameTypes>
+		</XmlNode>
+		<XmlNode>
+			<XmlName id="NPCCharacters" path="XSLT/ftr_sword_sister_upgrades"/>
+			<IncludedGameTypes>
+				<GameType value="Campaign"/>
+				<GameType value="CampaignStoryMode"/>
+				<GameType value="CustomGame"/>
+			</IncludedGameTypes>
+		</XmlNode>
+	</Xmls>
+</Module>

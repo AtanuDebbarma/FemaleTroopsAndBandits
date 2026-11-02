@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BodyProperties>
+	<!-- Nord townswoman face from War Sails, with base-game female hair.
+	     Kept in this module so Nord women still have hair when War Sails is not loaded. -->
+	<BodyProperty
+		id="ftr_woman_nord">
+		<BodyPropertiesMin
+			version="4"
+			age="22.55"
+			weight="0.2818"
+			build="0.4586"
+			key="000AA008210030153063F379241320F86C599A764AA4242B600800F27200600A00ABB6030AFF7FF600000000000000000000000000000000000000007D640142" />
+		<BodyPropertiesMax
+			version="4"
+			age="64.36"
+			weight="0.8501"
+			build="0.868"
+			key="0000000080000000506F030000007000C0A5000063701000F503000F60F0000A00477603043300000000000000000000000000000000000000000000008C8002" />
+		<hair_tags>
+			<hair_tag
+				name="High Ponytail" />
+			<hair_tag
+				name="LongOvershoulder" />
+			<hair_tag
+				name="TiedLongOverShoulder" />
+			<hair_tag
+				name="AboveShoulderLength" />
+			<hair_tag
+				name="TiedInBack" />
+			<hair_tag
+				name="BraidedInBack" />
+			<hair_tag
+				name="ShoulderLengthTied" />
+			<hair_tag
+				name="Cornrows" />
+			<hair_tag
+				name="CornrowMohawk" />
+			<hair_tag
+				name="BraidedAboveEars" />
+			<hair_tag
+				name="Ukrainian" />
+			<hair_tag
+				name="RestingOnShoulders" />
+			<hair_tag
+				name="VeryShort" />
+			<hair_tag
+				name="Bobbed" />
+			<hair_tag
+				name="Native Braids" />
+			<hair_tag
+				name="CrownBraid" />
+		</hair_tags>
+		<tattoo_tags>
+			<tattoo_tag
+				name="Cleanface" />
+			<tattoo_tag
+				name="Cleanface" />
+			<tattoo_tag
+				name="Scar1" />
+			<tattoo_tag
+				name="Cleanface" />
+			<tattoo_tag
+				name="Eastern14" />
+			<tattoo_tag
+				name="Eastern15" />
+			<tattoo_tag
+				name="Eastern16" />
+		</tattoo_tags>
+	</BodyProperty>
+</BodyProperties>
