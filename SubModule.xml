@@ -2,7 +2,7 @@
 <Module>
 	<Name value="Female Troops and Bandits"/>
 	<Id value="FemaleTroopsAndBandits"/>
-	<Version value="v1.0.0"/>
+	<Version value="v1.0.1"/>
 	<DefaultModule value="false"/>
 	<ModuleCategory value="Singleplayer"/>
 	<ModuleType value="Community"/>

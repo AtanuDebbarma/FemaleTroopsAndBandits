@@ -1029,10 +1029,10 @@ namespace FemaleTroopsAndBandits
             set { SetPercent(GroupPoachers, value); }
         }
 
-        // Flat under Troops with GroupOrder 7 so Conspiracy sits after culture/caravan groups
-        // (nested Conspiracy/Anti-Empire had no mid-level order and sorted to the top).
+        // Nested leaf groups keep unique MCM (DisplayName, GroupName) keys.
+        // Flattening both percents onto Conspiracy duplicated "Female troops percent" and broke MCM Equals.
         [SettingPropertyBool("{=ftr_mcm_conspiracy_anti}Anti-Empire", IsToggle = true, Order = 0, RequireRestart = false, HintText = ConspiracyHint)]
-        [SettingPropertyGroup(Conspiracy, GroupOrder = 7)]
+        [SettingPropertyGroup(Conspiracy + "/{=ftr_mcm_conspiracy_anti}Anti-Empire", GroupOrder = 7)]
         public bool ConspiracyAntiEmpire
         {
             get { return Enabled(GroupConspiracyAnti); }
@@ -1040,23 +1040,23 @@ namespace FemaleTroopsAndBandits
         }
 
         [SettingPropertyInteger(PercentName, 0, 100, "0", Order = 1, RequireRestart = false, HintText = PercentHint)]
-        [SettingPropertyGroup(Conspiracy)]
+        [SettingPropertyGroup(Conspiracy + "/{=ftr_mcm_conspiracy_anti}Anti-Empire")]
         public int ConspiracyAntiEmpirePercent
         {
             get { return ClampedPercent(GroupConspiracyAnti); }
             set { SetPercent(GroupConspiracyAnti, value); }
         }
 
-        [SettingPropertyBool("{=ftr_mcm_conspiracy_imperial}Imperial", IsToggle = true, Order = 2, RequireRestart = false, HintText = ConspiracyHint)]
-        [SettingPropertyGroup(Conspiracy)]
+        [SettingPropertyBool("{=ftr_mcm_conspiracy_imperial}Imperial", IsToggle = true, Order = 0, RequireRestart = false, HintText = ConspiracyHint)]
+        [SettingPropertyGroup(Conspiracy + "/{=ftr_mcm_conspiracy_imperial}Imperial", GroupOrder = 8)]
         public bool ConspiracyImperial
         {
             get { return Enabled(GroupConspiracyImperial); }
             set { SetEnabled(GroupConspiracyImperial, value); }
         }
 
-        [SettingPropertyInteger(PercentName, 0, 100, "0", Order = 3, RequireRestart = false, HintText = PercentHint)]
-        [SettingPropertyGroup(Conspiracy)]
+        [SettingPropertyInteger(PercentName, 0, 100, "0", Order = 1, RequireRestart = false, HintText = PercentHint)]
+        [SettingPropertyGroup(Conspiracy + "/{=ftr_mcm_conspiracy_imperial}Imperial")]
         public int ConspiracyImperialPercent
         {
             get { return ClampedPercent(GroupConspiracyImperial); }

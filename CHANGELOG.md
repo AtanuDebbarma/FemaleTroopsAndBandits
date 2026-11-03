@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.1
+
+- Fixed MCM error when opening Mod Options: Conspiracy Anti-Empire and Imperial percent sliders no longer share one group path (duplicate `Female troops percent` key). Each conspiracy group is nested again under Troops → Conspiracy.
+
 ## 1.0.0
 
 First release.
