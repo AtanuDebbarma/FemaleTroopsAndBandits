@@ -2,7 +2,7 @@
 
 A Mount & Blade II: Bannerlord mod that adds independent female troop trees for kingdom recruits, militia, minor factions, mercenaries, gangsters, caravan troops, bandits, War Sails marines, and Story Mode conspiracy forces. Female troops spawn from MCM percentages and do not overwrite vanilla troops.
 
-**Nexus Mod URL:** [FemaleTroopsAndBandits (for 1.4.8 and Warsails)](https://www.nexusmods.com/mountandblade2bannerlord/mods/14461)
+**Nexus Mod URL:** [FemaleTroopsAndBandits](https://www.nexusmods.com/mountandblade2bannerlord/mods/14461) (Bannerlord **1.5.7** / War Sails **1.3.7**)
 
 ## About this mod
 
@@ -74,15 +74,15 @@ At 0% new troops of that group stay male. At 100% every new troop of that group 
 
 | Dependency | Tested version | Expected to work with |
 |---|---|---|
-| Mount & Blade II: Bannerlord | 1.4.8 | 1.4.x |
+| Mount & Blade II: Bannerlord | 1.5.7 | 1.5.x |
 | [Harmony][harmony] | 2.4.2 | 2.x |
 | [ButterLib][butterlib] | 2.12.0 | 2.x |
 | [UIExtenderEx][uiextenderex] | 3.0.3 | 3.x |
 | [Mod Configuration Menu v5 (MCM)][mcm] | 5.13.1 | 5.x |
-| War Sails (NavalDLC), optional | 1.2.8 | 1.2.x |
-| Story Mode, optional | 1.4.8 | 1.4.x |
-| [Camel Cavalry][camelcavalry], optional | 1.0.0 | 1.x |
-| [Horse Bandits][horsebandits], optional | 1.0.0 | 1.x |
+| War Sails (NavalDLC), optional | 1.3.7 | 1.3.x |
+| Story Mode, optional | 1.5.7 | 1.5.x |
+| [Camel Cavalry][camelcavalry], optional | 1.0.1 | 1.x |
+| [Horse Bandits][horsebandits], optional | 1.0.1 | 1.x |
 | [Raise Your Banner][raiseyourbanner], optional | — | — |
 | [Castle Market Towns][cmt], optional | — | — |
 

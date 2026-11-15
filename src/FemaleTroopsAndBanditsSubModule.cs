@@ -37,6 +37,16 @@ namespace FemaleTroopsAndBandits
         {
             base.OnGameStart(game, gameStarterObject);
 
+            OptionalTroopXmlLoader.ResetForNewGameSession();
+            FemaleTroopSaveRepair.ResetForNewGameSession();
+
+            // Load War Sails / Camel / Horse Bandits packs before session wiring. Must run
+            // here so continue-game does not keep empty ftr_* shells from the save.
+            if (game.GameType is Campaign)
+            {
+                OptionalTroopXmlLoader.TryLoadForCampaign();
+            }
+
             // Do not wire upgrades here. Characters are registered but not ready yet
             // (Culture still null). Reading UpgradeTargets that early trips Crash Doctor's
             // null-field fallback, which stamps empty upgrade lists and shows a false

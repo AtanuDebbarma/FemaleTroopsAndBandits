@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.0.3
+
+- Targets Bannerlord **1.5.7** / War Sails **1.3.7**.
+- **Optional troop packs** (War Sails Nord / marines / Corsairs / naval caravans, Camel Cavalry, Horse Bandits) live in separate ModuleData XML files and load only when that DLC/mod is active — not declared as always-on SubModule XmlNodes.
+- **War Sails / optional packs actually load.** `OptionalTroopXmlLoader.TryLoadForCampaign` runs on game start (and again on session launch). Fixes empty `ftr_nord_*` / marine / corsair / naval-caravan shells when continuing a save with NavalDLC — the reported 1.5.7 + War Sails recruit crash.
+- **Old-save rematerialize.** After optional XML loads, rewrite empty `ftr_*` volunteer slots and party/prison stacks to the live registered troop, or clear the shell if still missing. Resolve paths treat empty shells as not usable.
+
 ## 1.0.1
 
 - Fixed MCM error when opening Mod Options: Conspiracy Anti-Empire and Imperial percent sliders no longer share one group path (duplicate `Female troops percent` key). Each conspiracy group is nested again under Troops → Conspiracy.

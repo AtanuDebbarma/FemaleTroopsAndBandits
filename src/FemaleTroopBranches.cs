@@ -122,6 +122,31 @@ namespace FemaleTroopsAndBandits
             return HorseBanditsPresent();
         }
 
+        // OptionalTroopXmlLoader: War Sails / Camel Cavalry packs stay off SubModule.xml until active.
+        internal static bool NavalDlcModuleSelected()
+        {
+            try
+            {
+                return ModuleHelper.IsModuleActive("NavalDLC");
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        internal static bool CamelCavalryModuleSelected()
+        {
+            try
+            {
+                return ModuleHelper.IsModuleActive("CamelCavalry");
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
         private static readonly Dictionary<string, string> UpgradeToFemale = new Dictionary<string, string>
         {
             { "sea_raiders_raider", "ftr_sea_raiders_raider" },
@@ -359,6 +384,8 @@ namespace FemaleTroopsAndBandits
     {
         public override void RegisterEvents()
         {
+            CampaignEvents.OnNewGameCreatedEvent.AddNonSerializedListener(this, OnNewGameCreated);
+            CampaignEvents.OnGameLoadedEvent.AddNonSerializedListener(this, OnGameLoaded);
             CampaignEvents.OnSessionLaunchedEvent.AddNonSerializedListener(this, OnSessionLaunched);
             CampaignEvents.DailyTickEvent.AddNonSerializedListener(this, OnDailyTick);
         }
@@ -367,14 +394,31 @@ namespace FemaleTroopsAndBandits
         {
         }
 
+        private void OnNewGameCreated(CampaignGameStarter starter)
+        {
+            OptionalTroopXmlLoader.TryLoadForCampaign();
+        }
+
+        private void OnGameLoaded(CampaignGameStarter starter)
+        {
+            // After continue-game: optional packs must exist before rematerialize/recruit.
+            OptionalTroopXmlLoader.TryLoadForCampaign();
+            FemaleTroopSaveRepair.TryRepairAfterOptionalLoad();
+        }
+
         private void OnSessionLaunched(CampaignGameStarter starter)
         {
+            // Safety if earlier hooks ran without NavalDLC visible yet; no-op when already loaded.
+            OptionalTroopXmlLoader.TryLoadForCampaign();
+            FemaleTroopSaveRepair.TryRepairAfterOptionalLoad();
             FemaleTroopBranches.Apply(FemaleTroopsSettings.Instance);
             RaiseYourBannerCompat.Apply();
         }
 
         private void OnDailyTick()
         {
+            OptionalTroopXmlLoader.TryLoadForCampaign();
+            FemaleTroopSaveRepair.TryRepairAfterOptionalLoad();
             FemaleTroopBranches.Apply(FemaleTroopsSettings.Instance);
             RaiseYourBannerCompat.Apply();
         }

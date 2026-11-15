@@ -1,0 +1,524 @@
+<?xml version="1.0" encoding="utf-8"?>
+<NPCCharacters>
+	<!-- Southern pirate / Corsair female troops (War Sails). -->
+<NPCCharacter
+		is_female="true"
+		id="ftr_southern_pirates_bandit"
+		default_group="Infantry"
+		name="{=ftr_southern_pirates_bandit}Corsair"
+		level="11"
+		occupation="Bandit"
+		culture="Culture.southern_pirates">
+		<face>
+			<face_key_template
+				value="BodyProperty.townswoman_aserai" />
+		</face>
+		<Traits>
+			<Trait
+				id="NavalSoldier"
+				value="1" />
+		</Traits>
+		<skills>
+			<skill
+				id="Athletics"
+				value="20" />
+			<skill
+				id="Bow"
+				value="20" />
+			<skill
+				id="OneHanded"
+				value="40" />
+			<skill
+				id="Polearm"
+				value="20" />
+			<skill
+				id="Riding"
+				value="10" />
+			<skill
+				id="Throwing"
+				value="40" />
+			<skill
+				id="TwoHanded"
+				value="10" />
+			<skill
+				id="Mariner"
+				value="70" />
+		</skills>
+		<upgrade_targets>
+			<upgrade_target
+				id="NPCCharacter.ftr_southern_pirates_raider" />
+		</upgrade_targets>
+		<Equipments>
+			<EquipmentRoster
+				civilian="true">
+				<equipment
+					slot="Item0"
+					id="Item.pirate_sword_2" />
+				<equipment
+					slot="Item1"
+					id="Item.western_javelin_1_t2" />
+				<equipment
+					slot="Item3"
+					id="Item.studded_adarga" />
+				<equipment
+					slot="Body"
+					id="Item.southern_pirate_armor" />
+				<equipment
+					slot="Head"
+					id="Item.southern_pirate_head" />
+			</EquipmentRoster>
+			<EquipmentRoster>
+				<equipment
+					slot="Item0"
+					id="Item.aserai_sword_2_t2" />
+				<equipment
+					slot="Item1"
+					id="Item.western_javelin_1_t2" />
+				<equipment
+					slot="Item3"
+					id="Item.studded_adarga" />
+				<equipment
+					slot="Body"
+					id="Item.pirate_a" />
+				<equipment
+					slot="Head"
+					id="Item.pirate_a_head" />
+			</EquipmentRoster>
+			<EquipmentRoster>
+				<equipment
+					slot="Item0"
+					id="Item.pirate_sword_3" />
+				<equipment
+					slot="Item1"
+					id="Item.northern_javelin_1_t2" />
+				<equipment
+					slot="Item3"
+					id="Item.studded_adarga" />
+				<equipment
+					slot="Body"
+					id="Item.southern_pirate_armor" />
+			</EquipmentRoster>
+			<EquipmentRoster>
+				<equipment
+					slot="Item0"
+					id="Item.pirate_sword_1" />
+				<equipment
+					slot="Item1"
+					id="Item.eastern_javelin_1_t2" />
+				<equipment
+					slot="Item3"
+					id="Item.studded_adarga" />
+				<equipment
+					slot="Body"
+					id="Item.pirate_a" />
+				<equipment
+					slot="Head"
+					id="Item.southern_pirate_head" />
+			</EquipmentRoster>
+			<EquipmentRoster>
+				<equipment
+					slot="Item0"
+					id="Item.pirate_sword_3" />
+				<equipment
+					slot="Item1"
+					id="Item.northern_javelin_1_t2" />
+				<equipment
+					slot="Item3"
+					id="Item.studded_adarga" />
+				<equipment
+					slot="Body"
+					id="Item.southern_pirate_armor" />
+				<equipment
+					slot="Head"
+					id="Item.southern_pirate_head" />
+			</EquipmentRoster>
+			<EquipmentRoster>
+				<equipment
+					slot="Item0"
+					id="Item.pirate_sword_3" />
+				<equipment
+					slot="Item1"
+					id="Item.northern_javelin_1_t2" />
+				<equipment
+					slot="Item3"
+					id="Item.studded_adarga" />
+				<equipment
+					slot="Body"
+					id="Item.southern_pirate_armor" />
+				<equipment
+					slot="Head"
+					id="Item.pirate_a_head" />
+			</EquipmentRoster>
+		</Equipments>
+	</NPCCharacter>
+
+<NPCCharacter
+		is_female="true"
+		id="ftr_southern_pirates_raider"
+		default_group="Infantry"
+		name="{=ftr_southern_pirates_raider}Corsair Warrior"
+		level="16"
+		occupation="Bandit"
+		culture="Culture.southern_pirates">
+		<face>
+			<face_key_template
+				value="BodyProperty.townswoman_aserai" />
+		</face>
+		<Traits>
+			<Trait
+				id="NavalSoldier"
+				value="1" />
+		</Traits>
+		<skills>
+			<skill
+				id="Athletics"
+				value="60" />
+			<skill
+				id="Bow"
+				value="40" />
+			<skill
+				id="OneHanded"
+				value="80" />
+			<skill
+				id="Polearm"
+				value="40" />
+			<skill
+				id="Riding"
+				value="20" />
+			<skill
+				id="Throwing"
+				value="80" />
+			<skill
+				id="TwoHanded"
+				value="20" />
+			<skill
+				id="Mariner"
+				value="80" />
+		</skills>
+		<upgrade_targets>
+			<upgrade_target
+				id="NPCCharacter.ftr_southern_pirates_chief" />
+			<upgrade_target
+				id="NPCCharacter.ftr_aserai_marine_t4" />
+		</upgrade_targets>
+		<Equipments>
+			<EquipmentRoster
+				civilian="true">
+				<equipment
+					slot="Item1"
+					id="Item.pirate_axe" />
+				<equipment
+					slot="Item0"
+					id="Item.western_javelin_2_t3" />
+				<equipment
+					slot="Body"
+					id="Item.pirate_tier_2_body" />
+				<equipment
+					slot="Cape"
+					id="Item.wrapped_scarf" />
+				<equipment
+					slot="Gloves"
+					id="Item.guarded_padded_vambrace" />
+			</EquipmentRoster>
+			<EquipmentRoster>
+				<equipment
+					slot="Item1"
+					id="Item.aserai_sword_3_t3" />
+				<equipment
+					slot="Item0"
+					id="Item.western_javelin_2_t3" />
+				<equipment
+					slot="Item2"
+					id="Item.large_adarga" />
+				<equipment
+					slot="Body"
+					id="Item.pirate_tier_2_body" />
+				<equipment
+					slot="Cape"
+					id="Item.wrapped_scarf" />
+				<equipment
+					slot="Gloves"
+					id="Item.guarded_padded_vambrace" />
+			</EquipmentRoster>
+			<EquipmentRoster>
+				<equipment
+					slot="Item1"
+					id="Item.pirate_axe" />
+				<equipment
+					slot="Item0"
+					id="Item.western_javelin_2_t3" />
+				<equipment
+					slot="Item2"
+					id="Item.large_adarga" />
+				<equipment
+					slot="Head"
+					id="Item.pirate_tier_2_head" />
+				<equipment
+					slot="Body"
+					id="Item.bandit_hybrid_armor_c" />
+				<equipment
+					slot="Leg"
+					id="Item.leather_shoes" />
+			</EquipmentRoster>
+			<EquipmentRoster>
+				<equipment
+					slot="Item1"
+					id="Item.aserai_sword_3_t3" />
+				<equipment
+					slot="Item0"
+					id="Item.northern_javelin_2_t3" />
+				<equipment
+					slot="Item2"
+					id="Item.large_adarga" />
+				<equipment
+					slot="Head"
+					id="Item.pirate_tier_2_head" />
+				<equipment
+					slot="Body"
+					id="Item.pirate_tier_2_body" />
+				<equipment
+					slot="Leg"
+					id="Item.strapped_leather_boots" />
+				<equipment
+					slot="Gloves"
+					id="Item.guarded_padded_vambrace" />
+			</EquipmentRoster>
+			<EquipmentRoster>
+				<equipment
+					slot="Item1"
+					id="Item.pirate_sword_3" />
+				<equipment
+					slot="Item2"
+					id="Item.large_adarga" />
+				<equipment
+					slot="Item0"
+					id="Item.northern_javelin_2_t3" />
+				<equipment
+					slot="Body"
+					id="Item.pirate_tier_2_body" />
+				<equipment
+					slot="Leg"
+					id="Item.strapped_leather_boots" />
+				<equipment
+					slot="Cape"
+					id="Item.wrapped_scarf" />
+			</EquipmentRoster>
+			<EquipmentRoster>
+				<equipment
+					slot="Item1"
+					id="Item.pirate_sword_3" />
+				<equipment
+					slot="Item2"
+					id="Item.large_adarga" />
+				<equipment
+					slot="Item0"
+					id="Item.northern_javelin_2_t3" />
+				<equipment
+					slot="Body"
+					id="Item.bandit_hybrid_armor_c" />
+				<equipment
+					slot="Leg"
+					id="Item.strapped_leather_boots" />
+				<equipment
+					slot="Cape"
+					id="Item.wrapped_scarf" />
+				<equipment
+					slot="Head"
+					id="Item.southern_pirate_turban" />
+			</EquipmentRoster>
+		</Equipments>
+	</NPCCharacter>
+
+<NPCCharacter
+		is_female="true"
+		id="ftr_southern_pirates_chief"
+		default_group="Infantry"
+		name="{=ftr_southern_pirates_chief}Corsair Chief"
+		level="21"
+		occupation="Bandit"
+		culture="Culture.southern_pirates">
+		<face>
+			<face_key_template
+				value="BodyProperty.townswoman_aserai" />
+		</face>
+		<Traits>
+			<Trait
+				id="NavalSoldier"
+				value="1" />
+		</Traits>
+		<skills>
+			<skill
+				id="Athletics"
+				value="100" />
+			<skill
+				id="Bow"
+				value="60" />
+			<skill
+				id="OneHanded"
+				value="120" />
+			<skill
+				id="Polearm"
+				value="60" />
+			<skill
+				id="Riding"
+				value="40" />
+			<skill
+				id="Throwing"
+				value="120" />
+			<skill
+				id="TwoHanded"
+				value="40" />
+			<skill
+				id="Mariner"
+				value="90" />
+		</skills>
+		<upgrade_targets>
+			<upgrade_target
+				id="NPCCharacter.ftr_aserai_marine_t5" />
+		</upgrade_targets>
+		<Equipments>
+			<EquipmentRoster
+				civilian="true">
+				<equipment
+					slot="Item1"
+					id="Item.pirate_sword_4" />
+				<equipment
+					slot="Body"
+					id="Item.bandit_hybrid_armor_a" />
+				<equipment
+					slot="Leg"
+					id="Item.mail_chausses" />
+				<equipment
+					slot="Cape"
+					id="Item.wrapped_scarf" />
+			</EquipmentRoster>
+			<EquipmentRoster>
+				<equipment
+					slot="Item1"
+					id="Item.aserai_sword_5_t4" />
+				<equipment
+					slot="Item2"
+					id="Item.generic_javelin_1_t3" />
+				<equipment
+					slot="Item3"
+					id="Item.old_kite_shield" />
+				<equipment
+					slot="Head"
+					id="Item.pirate_tier_2_head" />
+				<equipment
+					slot="Body"
+					id="Item.stitched_leather_over_mail" />
+				<equipment
+					slot="Leg"
+					id="Item.mail_chausses" />
+			</EquipmentRoster>
+			<EquipmentRoster>
+				<equipment
+					slot="Item1"
+					id="Item.ridged_sabre_sword_t4" />
+				<equipment
+					slot="Item2"
+					id="Item.western_javelin_3_t4" />
+				<equipment
+					slot="Item3"
+					id="Item.old_kite_shield" />
+				<equipment
+					slot="Head"
+					id="Item.pirate_tier_2_head" />
+				<equipment
+					slot="Body"
+					id="Item.bandit_hybrid_armor_b" />
+				<equipment
+					slot="Leg"
+					id="Item.mail_chausses" />
+			</EquipmentRoster>
+			<EquipmentRoster>
+				<equipment
+					slot="Item1"
+					id="Item.pirate_sword_4" />
+				<equipment
+					slot="Item2"
+					id="Item.eastern_javelin_3_t4" />
+				<equipment
+					slot="Item3"
+					id="Item.old_kite_shield" />
+				<equipment
+					slot="Head"
+					id="Item.southern_pirate_turban" />
+				<equipment
+					slot="Body"
+					id="Item.bandit_hybrid_armor_b" />
+				<equipment
+					slot="Leg"
+					id="Item.mail_chausses" />
+				<equipment
+					slot="Cape"
+					id="Item.wrapped_scarf" />
+				<equipment
+					slot="Gloves"
+					id="Item.lordly_mail_mitten" />
+			</EquipmentRoster>
+			<EquipmentRoster>
+				<equipment
+					slot="Item1"
+					id="Item.desert_long_sword_t4" />
+				<equipment
+					slot="Item2"
+					id="Item.western_javelin_3_t4" />
+				<equipment
+					slot="Item3"
+					id="Item.old_kite_shield" />
+				<equipment
+					slot="Head"
+					id="Item.southern_pirate_turban" />
+				<equipment
+					slot="Body"
+					id="Item.tacky_bandit" />
+				<equipment
+					slot="Leg"
+					id="Item.mail_cavalier_boots" />
+			</EquipmentRoster>
+			<EquipmentRoster>
+				<equipment
+					slot="Item1"
+					id="Item.pirate_sword_4" />
+				<equipment
+					slot="Item2"
+					id="Item.nord_spear_javelin_1_t3" />
+				<equipment
+					slot="Item3"
+					id="Item.old_kite_shield" />
+				<equipment
+					slot="Head"
+					id="Item.southern_pirate_turban" />
+				<equipment
+					slot="Body"
+					id="Item.bandit_hybrid_armor_a" />
+				<equipment
+					slot="Leg"
+					id="Item.mail_cavalier_boots" />
+			</EquipmentRoster>
+			<EquipmentRoster>
+				<equipment
+					slot="Item1"
+					id="Item.ridged_sabre_sword_t4" />
+				<equipment
+					slot="Item2"
+					id="Item.eastern_javelin_3_t4" />
+				<equipment
+					slot="Item3"
+					id="Item.old_kite_shield" />
+				<equipment
+					slot="Head"
+					id="Item.southern_pirate_head" />
+				<equipment
+					slot="Body"
+					id="Item.bandit_hybrid_armor_a" />
+				<equipment
+					slot="Leg"
+					id="Item.mail_cavalier_boots" />
+			</EquipmentRoster>
+		</Equipments>
+	</NPCCharacter>
+
+</NPCCharacters>

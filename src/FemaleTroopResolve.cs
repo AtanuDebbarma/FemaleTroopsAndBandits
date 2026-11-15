@@ -17,7 +17,7 @@ namespace FemaleTroopsAndBandits
             }
 
             CharacterObject female = manager.GetObject<CharacterObject>(femaleId);
-            if (female != null)
+            if (female != null && IsUsable(female))
             {
                 return female;
             }
@@ -28,6 +28,18 @@ namespace FemaleTroopsAndBandits
             }
 
             return null;
+        }
+
+        private static bool IsUsable(CharacterObject troop)
+        {
+            try
+            {
+                return troop.IsReady && troop.Culture != null;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }

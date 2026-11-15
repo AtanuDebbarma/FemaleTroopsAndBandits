@@ -2,17 +2,17 @@
 <Module>
 	<Name value="Female Troops and Bandits"/>
 	<Id value="FemaleTroopsAndBandits"/>
-	<Version value="v1.0.1"/>
+	<Version value="v1.0.3"/>
 	<DefaultModule value="false"/>
 	<ModuleCategory value="Singleplayer"/>
 	<ModuleType value="Community"/>
 	<Official value="false"/>
 	<DependedModules>
 		<DependedModule Id="Bannerlord.Harmony" DependentVersion="v2.4.2.248"/>
-		<DependedModule Id="Native" DependentVersion="v1.4.8"/>
-		<DependedModule Id="SandBoxCore" DependentVersion="v1.4.8"/>
-		<DependedModule Id="Sandbox" DependentVersion="v1.4.8"/>
-		<DependedModule Id="Bannerlord.MBOptionScreen" DependentVersion="v5.12.3"/>
+		<DependedModule Id="Native" DependentVersion="v1.5.7"/>
+		<DependedModule Id="SandBoxCore" DependentVersion="v1.5.7"/>
+		<DependedModule Id="Sandbox" DependentVersion="v1.5.7"/>
+		<DependedModule Id="Bannerlord.MBOptionScreen" DependentVersion="v5.13.1"/>
 		<DependedModule Id="StoryMode" Optional="true"/>
 		<DependedModule Id="CustomBattle" Optional="true"/>
 		<DependedModule Id="NavalDLC" Optional="true"/>
@@ -23,10 +23,10 @@
 	</DependedModules>
 	<DependedModuleMetadatas>
 		<DependedModuleMetadata id="Bannerlord.Harmony" order="LoadBeforeThis" version="v2.4.2.248"/>
-		<DependedModuleMetadata id="Native" order="LoadBeforeThis" version="v1.4.8"/>
-		<DependedModuleMetadata id="SandBoxCore" order="LoadBeforeThis" version="v1.4.8"/>
-		<DependedModuleMetadata id="Sandbox" order="LoadBeforeThis" version="v1.4.8"/>
-		<DependedModuleMetadata id="Bannerlord.MBOptionScreen" order="LoadBeforeThis" version="v5.12.3"/>
+		<DependedModuleMetadata id="Native" order="LoadBeforeThis" version="v1.5.7"/>
+		<DependedModuleMetadata id="SandBoxCore" order="LoadBeforeThis" version="v1.5.7"/>
+		<DependedModuleMetadata id="Sandbox" order="LoadBeforeThis" version="v1.5.7"/>
+		<DependedModuleMetadata id="Bannerlord.MBOptionScreen" order="LoadBeforeThis" version="v5.13.1"/>
 		<DependedModuleMetadata id="StoryMode" order="LoadBeforeThis" optional="true"/>
 		<DependedModuleMetadata id="CustomBattle" order="LoadBeforeThis" optional="true"/>
 		<DependedModuleMetadata id="NavalDLC" order="LoadBeforeThis" optional="true"/>
@@ -89,14 +89,6 @@
 		</XmlNode>
 		<XmlNode>
 			<XmlName id="NPCCharacters" path="ftr_quest_caravan_troops"/>
-			<IncludedGameTypes>
-				<GameType value="Campaign"/>
-				<GameType value="CampaignStoryMode"/>
-				<GameType value="CustomGame"/>
-			</IncludedGameTypes>
-		</XmlNode>
-		<XmlNode>
-			<XmlName id="NPCCharacters" path="ftr_naval_caravan_troops"/>
 			<IncludedGameTypes>
 				<GameType value="Campaign"/>
 				<GameType value="CampaignStoryMode"/>
