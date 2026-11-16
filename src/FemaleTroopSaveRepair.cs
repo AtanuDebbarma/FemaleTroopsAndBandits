@@ -27,6 +27,13 @@ namespace FemaleTroopsAndBandits
                 return;
             }
 
+            // Do not clear empty ftr_* shells until optional packs have verified usable troops
+            // (or their dependency is off). Clearing earlier permanently drops War Sails / Horse Bandits stacks.
+            if (!OptionalTroopXmlLoader.IsSettled())
+            {
+                return;
+            }
+
             MBObjectManager manager = MBObjectManager.Instance;
             if (manager == null)
             {

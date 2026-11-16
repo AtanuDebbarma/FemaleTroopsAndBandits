@@ -212,7 +212,7 @@ namespace FemaleTroopsAndBandits
             return _troopsSection;
         }
 
-        private static bool IsBanditGroup(string groupId)
+        internal static bool IsBanditGroup(string groupId)
         {
             return groupId == GroupLooters
                 || groupId == GroupSeaRaiders

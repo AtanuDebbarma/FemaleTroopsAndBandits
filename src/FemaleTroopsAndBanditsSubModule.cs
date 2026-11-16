@@ -17,7 +17,7 @@ namespace FemaleTroopsAndBandits
             try
             {
                 _harmony.PatchAll(typeof(FemaleTroopsAndBanditsSubModule).Assembly);
-                Debug.Print("[FemaleTroopsAndBandits] volunteer + party troop mapping active.");
+                Debug.Print("[FemaleTroopsAndBandits] volunteer + party troop mapping + female bandit VO mute active.");
             }
             catch (System.Exception exception)
             {

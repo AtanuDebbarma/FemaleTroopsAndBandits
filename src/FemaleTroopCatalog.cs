@@ -251,6 +251,42 @@ namespace FemaleTroopsAndBandits
             return Try(PartyTroops, maleId, out femaleId, out groupId);
         }
 
+        // True for FTR female bandit-line troops (roots and obvious upgrades), not kingdom/faction females.
+        internal static bool IsBanditLineFemaleId(string stringId)
+        {
+            if (string.IsNullOrEmpty(stringId))
+            {
+                return false;
+            }
+
+            foreach (KeyValuePair<string, Swap> pair in PartyTroops)
+            {
+                if (FemaleTroopsSettings.IsBanditGroup(pair.Value.GroupId)
+                    && string.Equals(pair.Value.FemaleId, stringId, System.StringComparison.Ordinal))
+                {
+                    return true;
+                }
+            }
+
+            if (!stringId.StartsWith("ftr_", System.StringComparison.Ordinal)
+                && stringId.IndexOf("female_", System.StringComparison.Ordinal) < 0)
+            {
+                return false;
+            }
+
+            return stringId.IndexOf("looter", System.StringComparison.Ordinal) >= 0
+                || stringId.IndexOf("sea_raiders", System.StringComparison.Ordinal) >= 0
+                || stringId.IndexOf("mountain_bandits", System.StringComparison.Ordinal) >= 0
+                || stringId.IndexOf("forest_bandits", System.StringComparison.Ordinal) >= 0
+                || stringId.IndexOf("desert_bandits", System.StringComparison.Ordinal) >= 0
+                || stringId.IndexOf("steppe_bandits", System.StringComparison.Ordinal) >= 0
+                || stringId.IndexOf("southern_pirates", System.StringComparison.Ordinal) >= 0
+                || stringId.IndexOf("poacher", System.StringComparison.Ordinal) >= 0
+                || stringId.IndexOf("horse_bandits", System.StringComparison.Ordinal) >= 0
+                || stringId.IndexOf("mounted_pillager", System.StringComparison.Ordinal) >= 0
+                || stringId.IndexOf("mounted_ransacker", System.StringComparison.Ordinal) >= 0;
+        }
+
         private static bool Try(Dictionary<string, Swap> map, string maleId, out string femaleId, out string groupId)
         {
             femaleId = null;

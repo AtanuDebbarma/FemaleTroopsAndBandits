@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.4
+
+- **Female bandit dialogue VO muted.** When a female bandit (any bandit line / bandit or hideout party leader) speaks in a map conversation cutscene, voice audio is unlinked so the scene continues silently. Vanilla male bandit and all non-bandit voices are unchanged.
+- **Optional troop packs verify before settling.** War Sails / Camel Cavalry / Horse Bandits XML load is no longer marked done on file-open alone. Sentinel female troops must resolve with Culture + IsReady; session/daily hooks retry until verified. Save repair waits for that settle so empty `ftr_*` shells are not cleared too early.
+- **Civilian equipment schema.** Six minor-faction female troops used `EquipmentRoster equipmentType="Civilian"`; corrected to `EquipmentSet` (jawwal / karakhuzaits T2–T3).
+
 ## 1.0.3
 
 - Targets Bannerlord **1.5.7** / War Sails **1.3.7**.
