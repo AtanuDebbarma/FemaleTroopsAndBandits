@@ -11746,7 +11746,7 @@ value="30" />
       <equipment slot="HorseHarness"
           id="Item.camel_saddle" />
       </EquipmentRoster>
-      <EquipmentSet equipmentType="Civilian">
+      <EquipmentRoster civilian="true">
       <equipment slot="Item0"
           id="Item.triangluar_spear_t3" />
       <equipment slot="Item1"
@@ -11767,7 +11767,7 @@ value="30" />
           id="Item.aserai_horse" />
       <equipment slot="HorseHarness"
           id="Item.light_harness" />
-      </EquipmentSet>
+      </EquipmentRoster>
       </Equipments>
       </NPCCharacter>
 
@@ -11838,7 +11838,7 @@ value="30" />
       <equipment slot="HorseHarness"
           id="Item.camel_saddle" />
       </EquipmentRoster>
-      <EquipmentSet equipmentType="Civilian">
+      <EquipmentRoster civilian="true">
       <equipment slot="Item0"
           id="Item.eastern_spear_4_t4" />
       <equipment slot="Item1"
@@ -11855,7 +11855,7 @@ value="30" />
           id="Item.war_camel" />
       <equipment slot="HorseHarness"
           id="Item.camel_saddle" />
-      </EquipmentSet>
+      </EquipmentRoster>
       <EquipmentSet id="aserai_troop_civilian_template_t3"
             equipmentType="Civilian" />
       </Equipments>
@@ -11921,7 +11921,7 @@ value="30" />
       <equipment slot="HorseHarness"
           id="Item.steppe_harness" />
       </EquipmentRoster>
-      <EquipmentSet equipmentType="Civilian">
+      <EquipmentRoster civilian="true">
       <equipment slot="Item0"
           id="Item.steppe_heavy_bow" />
       <equipment slot="Item1"
@@ -11946,7 +11946,7 @@ value="30" />
           id="Item.t2_khuzait_horse" />
       <equipment slot="HorseHarness"
           id="Item.steppe_harness" />
-      </EquipmentSet>
+      </EquipmentRoster>
       </Equipments>
       </NPCCharacter>
 
@@ -12007,7 +12007,7 @@ value="30" />
       <equipment slot="HorseHarness"
           id="Item.steppe_harness" />
       </EquipmentRoster>
-      <EquipmentSet equipmentType="Civilian">
+      <EquipmentRoster civilian="true">
       <equipment slot="Item0"
           id="Item.steppe_war_bow" />
       <equipment slot="Item1"
@@ -12034,7 +12034,7 @@ value="30" />
           id="Item.storm_charger" />
       <equipment slot="HorseHarness"
           id="Item.steppe_harness" />
-      </EquipmentSet>
+      </EquipmentRoster>
       </Equipments>
       </NPCCharacter>
 
@@ -14291,7 +14291,7 @@ value="10" />
       <equipment slot="Cape"
           id="Item.leopard_pelt" />
       </EquipmentRoster>
-      <EquipmentSet equipmentType="Civilian">
+      <EquipmentRoster civilian="true">
       <equipment slot="Item0"
           id="Item.eastern_spear_1_t2" />
       <equipment slot="Item1"
@@ -14302,7 +14302,7 @@ value="10" />
           id="Item.eastern_javelin_1_t2" />
       <equipment slot="Cape"
           id="Item.leopard_pelt" />
-      </EquipmentSet>
+      </EquipmentRoster>
       </Equipments>
       </NPCCharacter>
 
@@ -14399,7 +14399,7 @@ value="10" />
       <equipment slot="HorseHarness"
           id="Item.bandit_saddle_desert" />
       </EquipmentRoster>
-      <EquipmentSet equipmentType="Civilian">
+      <EquipmentRoster civilian="true">
       <equipment slot="Item0"
           id="Item.steppe_bow" />
       <equipment slot="Item1"
@@ -14418,7 +14418,7 @@ value="10" />
           id="Item.khuzait_horse" />
       <equipment slot="HorseHarness"
           id="Item.bandit_saddle_desert" />
-      </EquipmentSet>
+      </EquipmentRoster>
       </Equipments>
       </NPCCharacter>
 

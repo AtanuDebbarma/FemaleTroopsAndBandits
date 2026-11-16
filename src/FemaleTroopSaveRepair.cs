@@ -13,23 +13,16 @@ namespace FemaleTroopsAndBandits
     // registered troop when optional XML has loaded, or clear / male-fallback when not.
     internal static class FemaleTroopSaveRepair
     {
-        private static bool _ran;
+        private static bool _finished;
 
         internal static void ResetForNewGameSession()
         {
-            _ran = false;
+            _finished = false;
         }
 
         internal static void TryRepairAfterOptionalLoad()
         {
-            if (_ran || Campaign.Current == null)
-            {
-                return;
-            }
-
-            // Do not clear empty ftr_* shells until optional packs have verified usable troops
-            // (or their dependency is off). Clearing earlier permanently drops War Sails / Horse Bandits stacks.
-            if (!OptionalTroopXmlLoader.IsSettled())
+            if (_finished || Campaign.Current == null)
             {
                 return;
             }
@@ -42,6 +35,7 @@ namespace FemaleTroopsAndBandits
 
             int volunteersFixed = 0;
             int rosterFixed = 0;
+            int skippedPending = 0;
 
             foreach (Settlement settlement in Settlement.All)
             {
@@ -52,7 +46,9 @@ namespace FemaleTroopsAndBandits
 
                 foreach (Hero notable in settlement.Notables)
                 {
-                    volunteersFixed += RepairVolunteerSlots(manager, notable);
+                    int skipped;
+                    volunteersFixed += RepairVolunteerSlots(manager, notable, out skipped);
+                    skippedPending += skipped;
                 }
             }
 
@@ -63,20 +59,30 @@ namespace FemaleTroopsAndBandits
                     continue;
                 }
 
-                rosterFixed += RepairRoster(manager, party.MemberRoster);
-                rosterFixed += RepairRoster(manager, party.PrisonRoster);
+                int skippedMembers;
+                int skippedPrisoners;
+                rosterFixed += RepairRoster(manager, party.MemberRoster, out skippedMembers);
+                rosterFixed += RepairRoster(manager, party.PrisonRoster, out skippedPrisoners);
+                skippedPending += skippedMembers + skippedPrisoners;
             }
 
-            _ran = true;
             if (volunteersFixed > 0 || rosterFixed > 0)
             {
                 Debug.Print("[FemaleTroopsAndBandits] rematerialized " + volunteersFixed
                     + " volunteer slot(s) and " + rosterFixed + " roster stack(s) with empty ftr_* shells.");
             }
+
+            // Finish only when no optional pack is still Pending. Ready packs are repaired even if
+            // another pack is still loading; Pending shells are left alone until that pack settles.
+            if (OptionalTroopXmlLoader.IsSettled() && skippedPending == 0)
+            {
+                _finished = true;
+            }
         }
 
-        private static int RepairVolunteerSlots(MBObjectManager manager, Hero notable)
+        private static int RepairVolunteerSlots(MBObjectManager manager, Hero notable, out int skippedPending)
         {
+            skippedPending = 0;
             if (notable == null)
             {
                 return 0;
@@ -92,7 +98,14 @@ namespace FemaleTroopsAndBandits
             for (int i = 0; i < slots.Length; i++)
             {
                 CharacterObject replaced;
-                if (!TryReplaceEmptyFemale(manager, slots[i], out replaced))
+                RepairAction action = TryReplaceEmptyFemale(manager, slots[i], out replaced);
+                if (action == RepairAction.SkipPending)
+                {
+                    skippedPending++;
+                    continue;
+                }
+
+                if (action == RepairAction.None)
                 {
                     continue;
                 }
@@ -104,8 +117,9 @@ namespace FemaleTroopsAndBandits
             return fixedCount;
         }
 
-        private static int RepairRoster(MBObjectManager manager, TroopRoster roster)
+        private static int RepairRoster(MBObjectManager manager, TroopRoster roster, out int skippedPending)
         {
+            skippedPending = 0;
             if (roster == null || roster.Count <= 0)
             {
                 return 0;
@@ -117,7 +131,14 @@ namespace FemaleTroopsAndBandits
                 TroopRosterElement element = roster.GetElementCopyAtIndex(i);
                 CharacterObject troop = element.Character;
                 CharacterObject replaced;
-                if (!TryReplaceEmptyFemale(manager, troop, out replaced))
+                RepairAction action = TryReplaceEmptyFemale(manager, troop, out replaced);
+                if (action == RepairAction.SkipPending)
+                {
+                    skippedPending++;
+                    continue;
+                }
+
+                if (action == RepairAction.None)
                 {
                     continue;
                 }
@@ -137,36 +158,51 @@ namespace FemaleTroopsAndBandits
             return fixedCount;
         }
 
-        // Returns true when the slot/stack should be rewritten (replaced may be null = clear).
-        private static bool TryReplaceEmptyFemale(MBObjectManager manager, CharacterObject troop, out CharacterObject replaced)
+        private enum RepairAction
+        {
+            None,
+            Rewrite,
+            SkipPending,
+        }
+
+        // Rewrite: replaced may be null (= clear shell). SkipPending: wait for that optional pack.
+        private static RepairAction TryReplaceEmptyFemale(
+            MBObjectManager manager,
+            CharacterObject troop,
+            out CharacterObject replaced)
         {
             replaced = null;
             if (troop == null || string.IsNullOrEmpty(troop.StringId))
             {
-                return false;
+                return RepairAction.None;
             }
 
             string id = troop.StringId;
             if (!id.StartsWith("ftr_", StringComparison.Ordinal))
             {
-                return false;
+                return RepairAction.None;
             }
 
             if (IsUsable(troop))
             {
-                return false;
+                return RepairAction.None;
+            }
+
+            if (!OptionalTroopXmlLoader.CanRepairTroopId(id))
+            {
+                return RepairAction.SkipPending;
             }
 
             CharacterObject live = manager.GetObject<CharacterObject>(id);
             if (live != null && !object.ReferenceEquals(live, troop) && IsUsable(live))
             {
                 replaced = live;
-                return true;
+                return RepairAction.Rewrite;
             }
 
-            // Still empty after optional XML: drop the shell so vanilla recruit/combat cannot NRE.
+            // Pack Ready/Abandoned/Inactive/NotOptional and still empty: drop the shell.
             replaced = null;
-            return true;
+            return RepairAction.Rewrite;
         }
 
         private static bool IsUsable(CharacterObject troop)

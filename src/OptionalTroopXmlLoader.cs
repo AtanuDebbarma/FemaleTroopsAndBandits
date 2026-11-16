@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Library;
@@ -11,14 +12,21 @@ namespace FemaleTroopsAndBandits
     // SubModule.xml (always-load crashes when the dependency is missing). Load at campaign
     // start only when that dependency is active.
     //
-    // LoadOneXmlFromFile can "succeed" without leaving usable CharacterObjects (early load
-    // before Culture is ready, silent schema/path issues). Only mark a pack settled after
-    // sentinel troops resolve with Culture + IsReady so session/daily hooks can retry.
+    // LoadOneXmlFromFile can open a file while later NPCCharacter nodes never register.
+    // Packs settle only after every expected ftr_* id in that pack is usable (Culture + IsReady).
+    // Settlement is per-pack so one stuck dependency cannot block the others.
     internal static class OptionalTroopXmlLoader
     {
-        private static bool _navalSettled;
-        private static bool _camelSettled;
-        private static bool _horseSettled;
+        internal enum TroopLoadState
+        {
+            NotOptional,
+            Inactive,
+            Pending,
+            Ready,
+            Abandoned,
+        }
+
+        private const int MaxLoadAttempts = 12;
 
         private static readonly string[] NavalFiles = new string[]
         {
@@ -29,14 +37,70 @@ namespace FemaleTroopsAndBandits
             "ftr_naval_caravan_troops.xml",
         };
 
-        // One sentinel per Naval file — all must be usable before the pack settles.
-        private static readonly string[] NavalSentinels = new string[]
+        private static readonly string[] NavalExpectedIds = new string[]
         {
             "ftr_nord_youngling",
+            "ftr_nord_drengr",
+            "ftr_nord_axe_warrior",
+            "ftr_nord_spear_warrior",
+            "ftr_nord_boandi",
+            "ftr_nord_berserkr",
+            "ftr_nord_ungmann",
+            "ftr_nord_thegn",
+            "ftr_nord_jarlsmann",
+            "ftr_nord_hirdmann",
+            "ftr_nord_huscarl",
+            "ftr_nord_huntsman",
+            "ftr_nord_freeman_archer",
+            "ftr_nord_marksman",
+            "ftr_nord_skathi",
+            "ftr_nord_hew-bearer",
+            "ftr_nord_vargr",
+            "ftr_nord_skjaldbrestir",
+            "ftr_nord_ulfhednar",
             "ftr_empire_marine_t3",
+            "ftr_empire_marine_t4",
+            "ftr_empire_marine_t5",
+            "ftr_sturgia_marine_t3",
+            "ftr_sturgia_marine_t4",
+            "ftr_sturgia_marine_t5",
+            "ftr_aserai_marine_t4",
+            "ftr_aserai_marine_t5",
+            "ftr_battanian_marine_t4",
+            "ftr_battanian_marine_t5",
+            "ftr_vlandian_marine_t4",
+            "ftr_vlandian_marine_t5",
+            "ftr_nord_militia_archer",
+            "ftr_nord_militia_veteran_archer",
+            "ftr_nord_militia_spearman",
+            "ftr_nord_militia_veteran_spearman",
             "ftr_southern_pirates_bandit",
+            "ftr_southern_pirates_raider",
+            "ftr_southern_pirates_chief",
             "ftr_armed_trader_nord",
+            "ftr_caravan_guard_nord",
+            "ftr_veteran_caravan_guard_nord",
             "ftr_naval_armed_trader_aserai",
+            "ftr_naval_caravan_guard_aserai",
+            "ftr_naval_veteran_caravan_guard_aserai",
+            "ftr_naval_armed_trader_battania",
+            "ftr_naval_caravan_guard_battania",
+            "ftr_naval_veteran_caravan_guard_battania",
+            "ftr_naval_armed_trader_empire",
+            "ftr_naval_caravan_guard_empire",
+            "ftr_naval_veteran_caravan_guard_empire",
+            "ftr_naval_armed_trader_khuzait",
+            "ftr_naval_caravan_guard_khuzait",
+            "ftr_naval_veteran_caravan_guard_khuzait",
+            "ftr_naval_armed_trader_sturgia",
+            "ftr_naval_caravan_guard_sturgia",
+            "ftr_naval_veteran_caravan_guard_sturgia",
+            "ftr_naval_armed_trader_vlandia",
+            "ftr_naval_caravan_guard_vlandia",
+            "ftr_naval_veteran_caravan_guard_vlandia",
+            "ftr_naval_armed_trader_nord",
+            "ftr_naval_caravan_guard_nord",
+            "ftr_naval_veteran_caravan_guard_nord",
         };
 
         private static readonly string[] CamelFiles = new string[]
@@ -44,9 +108,14 @@ namespace FemaleTroopsAndBandits
             "ftr_camel_cavalry_troops.xml",
         };
 
-        private static readonly string[] CamelSentinels = new string[]
+        private static readonly string[] CamelExpectedIds = new string[]
         {
             "ftr_camel_cavalry_aserai_camel_rider",
+            "ftr_camel_cavalry_aserai_camel_lancer",
+            "ftr_camel_cavalry_aserai_camel_archer",
+            "ftr_camel_cavalry_khuzait_camel_torguud",
+            "ftr_camel_cavalry_khuzait_camel_kheshig",
+            "ftr_camel_cavalry_khuzait_heavy_camel_archer",
         };
 
         private static readonly string[] HorseBanditsFiles = new string[]
@@ -54,40 +123,70 @@ namespace FemaleTroopsAndBandits
             "ftr_horse_bandits_troops.xml",
         };
 
-        private static readonly string[] HorseBanditsSentinels = new string[]
+        // ftr_mounted_pillager / ransacker live in always-load ftr_bandit_troops.xml, not this pack.
+        private static readonly string[] HorseBanditsExpectedIds = new string[]
         {
-            "ftr_mounted_pillager",
+            "ftr_horse_bandits_mounted_huntsman",
+            "ftr_horse_bandits_mounted_packmaster",
+            "ftr_horse_bandits_imperial_bandit_horseman",
+            "ftr_horse_bandits_imperial_elite_bandit_horseman",
             "ftr_horse_bandits_chief",
+            "ftr_horse_bandits_boss",
+            "ftr_horse_bandits_vlandian_brigand_champion",
+            "ftr_horse_bandits_vlandian_brigand_banner_knight",
         };
 
-        // True when every active optional pack has verified usable troops (or its dependency is off).
+        private static readonly PackStatus NavalPack = PackStatus.Create(
+            "War Sails",
+            NavalFiles,
+            NavalExpectedIds,
+            FemaleTroopBranches.NavalDlcModuleSelected);
+
+        private static readonly PackStatus CamelPack = PackStatus.Create(
+            "Camel Cavalry",
+            CamelFiles,
+            CamelExpectedIds,
+            FemaleTroopBranches.CamelCavalryModuleSelected);
+
+        private static readonly PackStatus HorsePack = PackStatus.Create(
+            "Horse Bandits",
+            HorseBanditsFiles,
+            HorseBanditsExpectedIds,
+            FemaleTroopBranches.HorseBanditsModuleSelected);
+
+        private static Dictionary<string, PackStatus> _idToPack;
+
+        // True when every pack is Inactive, Ready, or Abandoned (none still Pending).
         internal static bool IsSettled()
         {
-            if (FemaleTroopBranches.NavalDlcModuleSelected() && !_navalSettled)
+            return !NavalPack.IsPending && !CamelPack.IsPending && !HorsePack.IsPending;
+        }
+
+        internal static TroopLoadState GetTroopLoadState(string stringId)
+        {
+            if (string.IsNullOrEmpty(stringId))
             {
-                return false;
+                return TroopLoadState.NotOptional;
             }
 
-            if (FemaleTroopBranches.CamelCavalryModuleSelected() && !_camelSettled)
+            EnsureIdMap();
+            PackStatus pack;
+            if (!_idToPack.TryGetValue(stringId, out pack) || pack == null)
             {
-                return false;
+                return TroopLoadState.NotOptional;
             }
 
-            if (FemaleTroopBranches.HorseBanditsModuleSelected() && !_horseSettled)
-            {
-                return false;
-            }
+            return pack.State;
+        }
 
-            return true;
+        // Shells may be rematerialized or cleared only when not waiting on a Pending pack.
+        internal static bool CanRepairTroopId(string stringId)
+        {
+            return GetTroopLoadState(stringId) != TroopLoadState.Pending;
         }
 
         internal static void TryLoadForCampaign()
         {
-            if (IsSettled())
-            {
-                return;
-            }
-
             MBObjectManager manager = MBObjectManager.Instance;
             if (manager == null)
             {
@@ -100,121 +199,103 @@ namespace FemaleTroopsAndBandits
                 return;
             }
 
-            if (FemaleTroopBranches.NavalDlcModuleSelected())
-            {
-                if (!_navalSettled)
-                {
-                    _navalSettled = LoadPack(manager, moduleRoot, "War Sails", NavalFiles, NavalSentinels);
-                }
-            }
-            else
-            {
-                _navalSettled = true;
-                Debug.Print("[FemaleTroopsAndBandits] NavalDLC not active; War Sails female troops skipped.");
-            }
-
-            if (FemaleTroopBranches.CamelCavalryModuleSelected())
-            {
-                if (!_camelSettled)
-                {
-                    _camelSettled = LoadPack(manager, moduleRoot, "Camel Cavalry", CamelFiles, CamelSentinels);
-                }
-            }
-            else
-            {
-                _camelSettled = true;
-                Debug.Print("[FemaleTroopsAndBandits] CamelCavalry not active; female camel troops skipped.");
-            }
-
-            if (FemaleTroopBranches.HorseBanditsModuleSelected())
-            {
-                if (!_horseSettled)
-                {
-                    _horseSettled = LoadPack(manager, moduleRoot, "Horse Bandits", HorseBanditsFiles, HorseBanditsSentinels);
-                }
-            }
-            else
-            {
-                _horseSettled = true;
-                Debug.Print("[FemaleTroopsAndBandits] HorseBandits not active; female Horse Bandits troops skipped.");
-            }
+            TickPack(manager, moduleRoot, NavalPack);
+            TickPack(manager, moduleRoot, CamelPack);
+            TickPack(manager, moduleRoot, HorsePack);
         }
 
         internal static void ResetForNewGameSession()
         {
-            _navalSettled = false;
-            _camelSettled = false;
-            _horseSettled = false;
+            NavalPack.Reset();
+            CamelPack.Reset();
+            HorsePack.Reset();
+            _idToPack = null;
         }
 
-        private static string GetModuleRoot()
+        private static void TickPack(MBObjectManager manager, string moduleRoot, PackStatus pack)
         {
-            try
+            if (!pack.IsDependencyActive())
             {
-                return ModuleHelper.GetModuleFullPath("FemaleTroopsAndBandits");
+                if (pack.State != TroopLoadState.Inactive)
+                {
+                    pack.MarkInactive();
+                    Debug.Print("[FemaleTroopsAndBandits] " + pack.Name
+                        + " not active; female troops for that pack skipped.");
+                }
+
+                return;
             }
-            catch (Exception exception)
+
+            if (pack.State == TroopLoadState.Ready || pack.State == TroopLoadState.Abandoned)
             {
-                Debug.Print("[FemaleTroopsAndBandits] optional troop XML path failed: " + exception.Message);
-                return null;
+                return;
             }
+
+            pack.Attempts++;
+            int filesOpened = LoadPackFiles(manager, moduleRoot, pack);
+
+            string missing;
+            if (AllExpectedUsable(manager, pack.ExpectedIds, out missing))
+            {
+                pack.MarkReady();
+                Debug.Print("[FemaleTroopsAndBandits] " + pack.Name
+                    + " female troop XML loaded and verified (" + filesOpened + " files, "
+                    + pack.ExpectedIds.Length + " troops).");
+                return;
+            }
+
+            if (pack.Attempts >= MaxLoadAttempts)
+            {
+                pack.MarkAbandoned();
+                Debug.Print("[FemaleTroopsAndBandits] " + pack.Name
+                    + " female troop XML still missing '" + missing
+                    + "' after " + pack.Attempts + " attempts; abandoning pack verification.");
+                return;
+            }
+
+            if (pack.Attempts == 1 || (pack.Attempts % 3) == 0)
+            {
+                Debug.Print("[FemaleTroopsAndBandits] " + pack.Name
+                    + " female troop XML opened (" + filesOpened + " files) but '"
+                    + missing + "' is not usable yet; will retry ("
+                    + pack.Attempts + "/" + MaxLoadAttempts + ").");
+            }
+
+            pack.MarkPending();
         }
 
-        // Returns true only when every sentinel CharacterObject is usable after load.
-        private static bool LoadPack(
-            MBObjectManager manager,
-            string moduleRoot,
-            string packName,
-            string[] fileNames,
-            string[] sentinelIds)
+        private static int LoadPackFiles(MBObjectManager manager, string moduleRoot, PackStatus pack)
         {
             int filesOpened = 0;
-            for (int i = 0; i < fileNames.Length; i++)
+            for (int i = 0; i < pack.Files.Length; i++)
             {
-                string path = moduleRoot + "ModuleData" + Path.DirectorySeparatorChar + fileNames[i];
+                string path = moduleRoot + "ModuleData" + Path.DirectorySeparatorChar + pack.Files[i];
                 if (!File.Exists(path))
                 {
-                    Debug.Print("[FemaleTroopsAndBandits] missing " + packName + " troop XML: " + fileNames[i]);
+                    Debug.Print("[FemaleTroopsAndBandits] missing " + pack.Name + " troop XML: " + pack.Files[i]);
                     continue;
                 }
 
                 try
                 {
-                    // forceSkipValidation: XSD misses do not throw; still verify sentinels below.
                     manager.LoadOneXmlFromFile(path, string.Empty, true);
                     filesOpened++;
                 }
                 catch (Exception exception)
                 {
-                    Debug.Print("[FemaleTroopsAndBandits] failed loading " + fileNames[i] + ": " + exception.Message);
+                    Debug.Print("[FemaleTroopsAndBandits] failed loading " + pack.Files[i] + ": " + exception.Message);
                 }
             }
 
-            string missing = null;
-            if (!AllSentinelsUsable(manager, sentinelIds, out missing))
-            {
-                Debug.Print("[FemaleTroopsAndBandits] " + packName
-                    + " female troop XML opened (" + filesOpened + " files) but sentinel '"
-                    + missing + "' is not usable yet; will retry.");
-                return false;
-            }
-
-            Debug.Print("[FemaleTroopsAndBandits] " + packName
-                + " female troop XML loaded and verified (" + filesOpened + " files).");
-            return true;
+            return filesOpened;
         }
 
-        private static bool AllSentinelsUsable(MBObjectManager manager, string[] sentinelIds, out string missingId)
+        private static bool AllExpectedUsable(MBObjectManager manager, string[] expectedIds, out string missingId)
         {
             missingId = null;
-            if (sentinelIds == null || sentinelIds.Length == 0)
+            for (int i = 0; i < expectedIds.Length; i++)
             {
-                return true;
-            }
-
-            for (int i = 0; i < sentinelIds.Length; i++)
-            {
-                string id = sentinelIds[i];
+                string id = expectedIds[i];
                 CharacterObject troop = manager.GetObject<CharacterObject>(id);
                 if (!IsUsable(troop))
                 {
@@ -240,6 +321,95 @@ namespace FemaleTroopsAndBandits
             catch
             {
                 return false;
+            }
+        }
+
+        private static string GetModuleRoot()
+        {
+            try
+            {
+                return ModuleHelper.GetModuleFullPath("FemaleTroopsAndBandits");
+            }
+            catch (Exception exception)
+            {
+                Debug.Print("[FemaleTroopsAndBandits] optional troop XML path failed: " + exception.Message);
+                return null;
+            }
+        }
+
+        private static void EnsureIdMap()
+        {
+            if (_idToPack != null)
+            {
+                return;
+            }
+
+            Dictionary<string, PackStatus> map = new Dictionary<string, PackStatus>(StringComparer.Ordinal);
+            AddIds(map, NavalPack);
+            AddIds(map, CamelPack);
+            AddIds(map, HorsePack);
+            _idToPack = map;
+        }
+
+        private static void AddIds(Dictionary<string, PackStatus> map, PackStatus pack)
+        {
+            for (int i = 0; i < pack.ExpectedIds.Length; i++)
+            {
+                map[pack.ExpectedIds[i]] = pack;
+            }
+        }
+
+        private sealed class PackStatus
+        {
+            public string Name;
+            public string[] Files;
+            public string[] ExpectedIds;
+            public Func<bool> IsDependencyActive;
+            public TroopLoadState State;
+            public int Attempts;
+
+            public bool IsPending
+            {
+                get { return State == TroopLoadState.Pending; }
+            }
+
+            public static PackStatus Create(string name, string[] files, string[] expectedIds, Func<bool> isActive)
+            {
+                PackStatus pack = new PackStatus();
+                pack.Name = name;
+                pack.Files = files;
+                pack.ExpectedIds = expectedIds;
+                pack.IsDependencyActive = isActive;
+                pack.State = TroopLoadState.Pending;
+                pack.Attempts = 0;
+                return pack;
+            }
+
+            public void Reset()
+            {
+                State = TroopLoadState.Pending;
+                Attempts = 0;
+            }
+
+            public void MarkInactive()
+            {
+                State = TroopLoadState.Inactive;
+                Attempts = 0;
+            }
+
+            public void MarkPending()
+            {
+                State = TroopLoadState.Pending;
+            }
+
+            public void MarkReady()
+            {
+                State = TroopLoadState.Ready;
+            }
+
+            public void MarkAbandoned()
+            {
+                State = TroopLoadState.Abandoned;
             }
         }
     }
