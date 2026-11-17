@@ -4,8 +4,8 @@
 
 - **Female bandit dialogue VO muted.** When a female bandit (any bandit line / bandit or hideout party leader) speaks in a map conversation cutscene, voice audio is unlinked so the scene continues silently. Vanilla male bandit and all non-bandit voices are unchanged.
 - **Optional troop packs verify before settling.** War Sails / Camel Cavalry / Horse Bandits XML load is no longer marked done on file-open alone. Every expected `ftr_*` troop in the pack must resolve with Culture + IsReady (not one early sentinel). Settlement is per-pack; a stuck pack abandons after 12 attempts instead of blocking the others forever.
-- **Save repair is per-pack.** Empty shells for a Ready/Inactive/Abandoned pack can rematerialize or clear while another pack is still Pending.
-- **Civilian equipment schema.** Six minor-faction female troops used invalid civilian tags; corrected to vanilla `<EquipmentRoster civilian="true">` with inline gear (jawwal / karakhuzaits T2–T3).
+- **Save repair is per-pack.** Empty shells for a Ready / Inactive / Abandoned pack can rematerialize or clear while another pack is still Pending.
+- **Civilian equipment schema.** Six minor-faction female troops used invalid civilian tags; corrected to vanilla `<EquipmentRoster civilian="true">` with inline gear (Jawwal / Karakhuzaits T2–T3).
 
 ## 1.0.3
 

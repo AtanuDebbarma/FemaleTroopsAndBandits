@@ -13,7 +13,7 @@ This is a direct continuation and upgrade of **[Female Troops Reborn V1.7.0](htt
 - **Independent female troops:** Separate `ftr_*` IDs. Vanilla troops stay unchanged.
 - **Full MCM:** Per-group toggle and 0–100% slider. Default 25%. No XML editing.
 - **MCM layout:** **Troops** first, then **Bandits**.
-- **Female bandits:** Looters, Sea Raiders, Mountain, Forest, Desert, Steppe, War Sails Corsairs, and Army of Poachers.
+- **Female bandits:** Looters, Sea Raiders, Mountain, Forest, Desert, Steppe, War Sails Corsairs, and Army of Poachers. Map conversation voice for female bandit leaders is muted (male bandit VO unchanged).
 - **Caravan / Smugglers / War Sails convoys:** Female Armed Traders and Caravan Guards (land). War Sails naval/convoy caravan troops (`naval_*`) use the same **Caravan Troops** switch. Smugglers quest parties use land caravan templates.
 - **Horse Bandits:** Optional MCM **HorseBandits (Mod Support)** when **[Horse Bandits](https://www.nexusmods.com/mountandblade2bannerlord/mods/14448)** is enabled. Hidden entirely if that mod is not in the load order.
 - **Camel Cavalry:** Female camel upgrades when **[Camel Cavalry](https://www.nexusmods.com/mountandblade2bannerlord/mods/14240)** is installed (via Aserai / Khuzait recruit switches).
@@ -42,7 +42,9 @@ At 0% new troops of that group stay male. At 100% every new troop of that group 
 
 **Party fills:** During spawn and template fill (bandits, militia, alleys, many quests, conspiracy, War Sails pirates, and similar), mapped male template troops may swap to female. Quest hand-overs that move a soldier you already chose do not re-roll that soldier.
 
-**Bandits:** Female bandits appear in parties, hideouts, chiefs, and bosses when that line’s switch is on. Deserters follow Looters. Northern pirates follow Sea Raiders. With War Sails, female Sea Raiders use the Nord upgrade exit.
+**Bandits:** Female bandits appear in parties, hideouts, chiefs, and bosses when that line’s switch is on. Deserters follow Looters. Northern pirates follow Sea Raiders. With War Sails, female Sea Raiders use the Nord upgrade exit. Female bandit map-conversation voice is unlinked so the cutscene continues silently; male bandit and non-bandit voices are unchanged.
+
+**Optional packs (War Sails / Camel Cavalry / Horse Bandits):** Separate ModuleData XML loads only when that DLC or mod is active. Each pack settles only after every expected `ftr_*` troop resolves (Culture + IsReady). Empty shells from older saves are rematerialized or cleared per pack.
 
 **Upgrades:** Aserai and Khuzait female recruits can gain female camel upgrades when Camel Cavalry is installed. War Sails female land troops can gain an extra marine upgrade. Those links follow the matching MCM switches. Branch wiring runs after character data is ready (session launch / daily tick / MCM change), not during early game start, so tools like Crash Doctor do not treat half-loaded troops as broken XML.
 
